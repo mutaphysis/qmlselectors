@@ -13,6 +13,12 @@ public:
     CssSelector();
     virtual ~CssSelector();
 
+    bool parse_stream(std::istream& in,
+    const std::string& sname = "stream input");
+
+    bool parse_string( const std::string& input,
+                        const std::string& sname = "string stream");
+
 protected:
     void cssparser_handle_id_selector(const std::string* id);
     void cssparser_handle_charset(const std::string* id);
@@ -22,7 +28,9 @@ protected:
     void cssparser_handle_attribute_selector(const std::string* id, const std::string* id2, const std::string* id3);
 
     void error(const cssselector_parser::location_type& loc, const std::string& message);
+    void error(const std::string& message);
 
+    std::string streamname;
     class CssSelectorScanner* lexer;
 
     friend class cssselector_parser;

@@ -14,7 +14,10 @@
 
 %parse-param { class CssSelector& driver }
 
-%start stylesheet
+ // Correct start for parsing css files
+ // %start stylesheet
+ // But we want to parse selectors instead
+%start selector_list
 
 %define "parser_class_name" "cssselector_parser"
 
@@ -25,7 +28,6 @@
 }
 
 %error-verbose
-
 
 %locations
 %initial-action

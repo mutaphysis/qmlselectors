@@ -5,7 +5,7 @@
 
 #include <sstream>
 
-#include "cssselector.h"
+#include "css/cssselector.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,9 +14,10 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    std::string selector = "#name Type.class[@attrib= \"some value\" ]";
+    std::string selector = "#name Type.class[attrib= \"some value\" ]";
 
-
+    css::CssSelector parser;
+    parser.parse_string( selector );
 
     qDebug() << engine.rootObjects();
 

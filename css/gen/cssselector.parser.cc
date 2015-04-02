@@ -38,7 +38,7 @@
 #include "cssselector.parser.hh"
 
 /* User implementation prologue.  */
-#line 73 "css/cssselector.yy"
+#line 75 "css/cssselector.yy"
 
 #include "css/cssselectorscanner.h"
 #include "css/cssselector.h"
@@ -279,7 +279,7 @@ namespace css
 
 
     /* User initialization code.  */
-    #line 32 "css/cssselector.yy"
+    #line 34 "css/cssselector.yy"
 {
   // Initialize the initial location.
 /*  @$.begin.filename = @$.end.filename = &driver._file;*/
@@ -400,139 +400,83 @@ namespace css
     YY_REDUCE_PRINT (yyn);
     switch (yyn)
       {
-	  case 4:
-#line 95 "css/cssselector.yy"
-    {
-        driver.cssparser_handle_charset((yysemantic_stack_[(3) - (2)].stringVal));
-    ;}
-    break;
-
-  case 37:
-#line 174 "css/cssselector.yy"
+	  case 2:
+#line 176 "css/cssselector.yy"
     {
         // TODO PyObject_CallMethod((PyObject*)global_self, CSSPARSER_HANDLE_COMBINATOR, "s", "+");
     ;}
     break;
 
-  case 38:
-#line 178 "css/cssselector.yy"
+  case 3:
+#line 180 "css/cssselector.yy"
     {
         // TODO PyObject_CallMethod((PyObject*)global_self, CSSPARSER_HANDLE_COMBINATOR, "s", ">");
     ;}
     break;
 
-  case 41:
-#line 190 "css/cssselector.yy"
-    {
-        (yyval.stringVal) = (yysemantic_stack_[(2) - (1)].stringVal);
-    ;}
-    break;
-
-  case 63:
-#line 237 "css/cssselector.yy"
+  case 23:
+#line 239 "css/cssselector.yy"
     {
         driver.cssparser_handle_id_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
-  case 64:
-#line 244 "css/cssselector.yy"
+  case 24:
+#line 246 "css/cssselector.yy"
     {
         driver.cssparser_handle_class_selector((yysemantic_stack_[(2) - (2)].stringVal));
     ;}
     break;
 
-  case 65:
-#line 251 "css/cssselector.yy"
+  case 25:
+#line 253 "css/cssselector.yy"
     {
         driver.cssparser_handle_type_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
-  case 66:
-#line 258 "css/cssselector.yy"
+  case 26:
+#line 260 "css/cssselector.yy"
     {
         driver.cssparser_handle_empty_attribute_selector((yysemantic_stack_[(5) - (3)].stringVal));
     ;}
     break;
 
-  case 67:
-#line 262 "css/cssselector.yy"
+  case 27:
+#line 264 "css/cssselector.yy"
     {
         driver.cssparser_handle_attribute_selector((yysemantic_stack_[(9) - (3)].stringVal), (yysemantic_stack_[(9) - (5)].stringVal), (yysemantic_stack_[(9) - (7)].stringVal));
     ;}
     break;
 
-  case 68:
-#line 269 "css/cssselector.yy"
+  case 28:
+#line 271 "css/cssselector.yy"
     {   (yyval.stringVal) = new std::string("=");    ;}
     break;
 
-  case 69:
-#line 271 "css/cssselector.yy"
-    {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
-    break;
-
-  case 70:
+  case 29:
 #line 273 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
-  case 71:
-#line 278 "css/cssselector.yy"
+  case 30:
+#line 275 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
-  case 72:
+  case 31:
 #line 280 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
-  case 81:
-#line 305 "css/cssselector.yy"
-    {
-        // TODO PyObject_CallMethod((PyObject*)global_self, CSSPARSER_HANDLE_DECLARATION, "ss", $1, $4);
-    ;}
-    break;
-
-  case 82:
-#line 309 "css/cssselector.yy"
-    {
-        // TODO PyObject_CallMethod((PyObject*)global_self, CSSPARSER_HANDLE_DECLARATION, "ss", $1, $4);
-    ;}
-    break;
-
-  case 84:
-#line 320 "css/cssselector.yy"
-    {
-        (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);
-    ;}
-    break;
-
-  case 89:
-#line 333 "css/cssselector.yy"
-    {
-        (yyval.stringVal) = (yysemantic_stack_[(2) - (1)].stringVal);
-    ;}
-    break;
-
-  case 90:
-#line 337 "css/cssselector.yy"
-    {
-        (yyval.stringVal) = (yysemantic_stack_[(2) - (1)].stringVal);
-    ;}
-    break;
-
-  case 91:
-#line 341 "css/cssselector.yy"
-    {
-        (yyval.stringVal) = (yysemantic_stack_[(2) - (1)].stringVal);
-    ;}
+  case 32:
+#line 282 "css/cssselector.yy"
+    {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
 
     /* Line 675 of lalr1.cc.  */
-#line 536 "css/gen/cssselector.parser.cc"
+#line 480 "css/gen/cssselector.parser.cc"
 	default: break;
       }
     YY_SYMBOL_PRINT ("-> $$ =", yyr1_[yyn], &yyval, &yyloc);
@@ -739,29 +683,16 @@ namespace css
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-  const signed char cssselector_parser::yypact_ninf_ = -119;
-  const short int
+  const signed char cssselector_parser::yypact_ninf_ = -30;
+  const signed char
   cssselector_parser::yypact_[] =
   {
-        -2,     1,    22,  -119,     6,  -119,    14,  -119,  -119,  -119,
-    -119,  -119,  -119,  -119,    -4,    69,    37,  -119,  -119,  -119,
-    -119,  -119,  -119,  -119,    66,   135,    44,  -119,  -119,  -119,
-    -119,   125,   -10,  -119,   101,  -119,  -119,  -119,  -119,  -119,
-    -119,  -119,  -119,    52,   136,    80,    15,  -119,  -119,  -119,
-    -119,  -119,  -119,    98,    37,    37,    37,  -119,  -119,    57,
-    -119,  -119,    57,  -119,    58,    58,  -119,  -119,    72,  -119,
-    -119,   127,   148,  -119,    85,    92,    99,  -119,    60,     0,
-     135,   101,    58,    58,   101,    58,    58,  -119,  -119,    58,
-    -119,  -119,   164,   133,  -119,  -119,  -119,    86,    10,  -119,
-    -119,    90,   179,  -119,   -10,  -119,    58,    80,    58,    58,
-    -119,  -119,  -119,    58,   187,    58,  -119,  -119,  -119,  -119,
-    -119,  -119,    58,    58,  -119,  -119,  -119,  -119,    88,   133,
-      58,  -119,    54,   212,   133,    58,  -119,  -119,  -119,    58,
-    -119,  -119,  -119,  -119,  -119,  -119,  -119,  -119,  -119,  -119,
-    -119,  -119,  -119,  -119,  -119,  -119,  -119,  -119,   121,   185,
-    -119,  -119,  -119,  -119,  -119,    58,    -9,    58,   212,    58,
-      58,    58,  -119,  -119,  -119,  -119,   239,  -119,  -119,    58,
-    -119,   155,    58,    58,    58,    58,  -119,  -119,    58
+        10,   -30,   -30,    13,    36,   -13,   -30,     3,    43,   -30,
+      22,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,
+     -30,   -30,   -30,     8,   -30,   -30,    34,   -30,   -30,    34,
+     -30,    45,   -30,   -30,     7,    36,    22,    -9,    -9,    22,
+     -30,   -29,     0,    43,   -30,    -9,   -30,   -30,   -30,   -30,
+     -30,   -30,     4,   -30,   -30,   -30,   -11,   -30
   };
 
   /* YYDEFACT[S] -- default rule to reduce with in state S when YYTABLE
@@ -770,118 +701,59 @@ namespace css
   const unsigned char
   cssselector_parser::yydefact_[] =
   {
-         3,     0,     0,     5,     0,     1,     9,     4,     8,     7,
-       6,   104,    11,    15,     0,    52,    10,   105,   104,   104,
-      63,    65,   104,   104,     0,    53,     0,   104,    15,    15,
-      15,     0,    44,    45,    48,    57,    61,    60,    55,    59,
-      62,   104,   104,     0,     0,     0,     0,   104,    74,    73,
-      56,    54,    64,     0,    13,    14,    12,   104,   104,    51,
-     104,   104,     0,    58,    17,    16,   104,   104,     0,    25,
-     104,     0,     0,   104,     0,     0,    76,   104,     0,    52,
-       0,    50,    37,    38,    49,    27,    20,   104,   104,    21,
-     104,   104,     0,    31,   104,   104,   104,     0,     0,   104,
-     104,     0,     0,    78,    46,    47,    18,     0,    19,    23,
-     104,   104,    30,    34,     0,    77,    75,    70,    69,    66,
-      68,   104,    41,    43,   104,   104,   104,    26,    52,    33,
-      29,   104,     0,     0,    80,    42,   104,    24,    32,    28,
-      72,    71,   104,    99,    97,    98,   104,   101,   104,   104,
-     104,    96,    94,    95,   100,   104,    40,    39,     0,    82,
-      84,   104,    93,    92,    79,    22,     0,    89,     0,   103,
-      90,    91,   104,   104,   104,   104,     0,    81,    86,    88,
-      67,     0,    87,    83,    36,    35,    85,   104,   102
+        12,    23,    25,     0,    13,     0,    38,     0,     4,     5,
+       8,    17,    21,    20,    15,    19,    22,    38,    34,    33,
+      16,    14,    24,     0,     1,    38,    11,    38,    38,     0,
+      18,    36,    39,    38,    12,     0,    10,     2,     3,     9,
+      38,     0,     0,     6,     7,    37,    35,    30,    29,    26,
+      28,    38,     0,    32,    31,    38,     0,    27
   };
 
   /* YYPGOTO[NTERM-NUM].  */
-  const short int
+  const signed char
   cssselector_parser::yypgoto_[] =
   {
-      -119,  -119,  -119,  -119,  -119,  -119,   156,  -119,  -119,  -119,
-       9,    23,  -119,    47,  -119,  -119,  -119,  -119,  -119,    32,
-    -119,   126,   142,   132,   -20,  -119,  -119,   -23,  -119,  -119,
-    -119,  -119,  -119,  -119,  -119,   -92,  -119,    36,  -118,    56,
-    -119,  -119,   -11
+       -30,   -30,   -30,    23,    25,   -14,    -3,   -30,   -30,     2,
+     -30,   -30,   -30,   -30,   -30,   -30,   -17
   };
 
   /* YYDEFGOTO[NTERM-NUM].  */
-  const short int
+  const signed char
   cssselector_parser::yydefgoto_[] =
   {
-        -1,     2,     3,     6,    12,    15,    16,    13,    28,   128,
-      68,    69,    29,    92,    75,   176,    62,   158,   101,    30,
-      31,    32,    33,    34,    35,    36,    37,    38,    39,   121,
-     142,    40,    49,    97,   102,   103,   177,   159,   160,   161,
-     162,   163,    93
+        -1,    29,     7,     8,     9,    10,    11,    12,    13,    14,
+      15,    51,    55,    16,    19,    41,    23
   };
 
   /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
      positive, shift that token.  If negative, reduce the rule which
      number is the opposite.  If zero, do what YYDEFACT says.  */
-  const signed char cssselector_parser::yytable_ninf_ = -3;
-  const short int
+  const signed char cssselector_parser::yytable_ninf_ = -1;
+  const unsigned char
   cssselector_parser::yytable_[] =
   {
-        14,   112,    51,    59,    17,    50,     1,    43,    44,    17,
-      18,    45,    46,    17,    63,     4,    53,    20,    21,   117,
-       8,     9,     5,    17,    19,    60,    61,    10,    17,   118,
-      64,    65,   180,    24,    11,     7,    76,   138,    25,    26,
-      27,   178,   164,    41,    42,    73,    78,    79,    74,    82,
-      83,   119,   120,    71,    72,    85,    86,    51,   186,    89,
-      50,    63,    52,   178,    63,    17,    98,    17,   140,    -2,
-      66,    17,   141,    17,    20,    21,   106,   107,    99,   108,
-     109,    67,    47,   113,    48,   115,    20,    21,   122,   123,
-      24,   100,    22,    17,    23,    80,    26,    27,    66,   129,
-     130,    87,    24,    94,    88,    20,    21,    25,    26,    27,
-     132,    17,    17,   133,   134,   135,    77,    96,    20,   136,
-     139,    24,    95,   124,   143,   165,    25,    26,    27,   116,
-     127,   166,   144,   145,    24,   167,   147,   168,   169,   170,
-      26,    27,   114,   151,   171,   152,    17,   153,   154,    17,
-     179,    99,    20,    21,    66,    57,    90,    58,   143,    88,
-     137,   182,   183,   184,   185,    70,   144,   145,    24,   146,
-     147,   148,   149,   150,    26,    27,   188,   151,    91,   152,
-      88,   153,   154,   155,    54,    55,    56,   174,   143,   175,
-     156,    81,   157,   110,    84,   111,   144,   145,   187,   146,
-     147,   148,   149,   150,   181,   104,   173,   151,   125,   152,
-     126,   153,   154,   155,   172,   143,   110,   174,   131,   175,
-     156,   105,   157,   144,   145,    17,   146,   147,   148,   149,
-     150,     0,     0,     0,   151,     0,   152,     0,   153,   154,
-     155,     0,   143,     0,     0,     0,     0,   156,     0,   157,
-     144,   145,     0,   146,   147,   148,   149,   150,     0,     0,
-       0,   151,     0,   152,     0,   153,   154,   155,     0,     0,
-       0,     0,     0,     0,   156,     0,   157
+        31,    20,    32,    24,    32,    22,    21,    30,    34,    47,
+      37,    38,    36,    32,    46,    39,    42,    32,    53,    48,
+      32,    32,    54,    45,     1,     2,    33,     1,     2,    17,
+      57,    18,    20,    30,    52,    25,    30,    21,    56,     1,
+       3,    49,    50,     3,     0,     4,     5,     6,     4,     5,
+       6,     1,     2,     1,     2,     3,    26,    43,    32,    44,
+       0,     5,     6,    40,     0,     0,     0,     3,     0,     3,
+       0,     0,    35,     5,     6,     5,     6,     0,    27,    28
   };
 
   /* YYCHECK.  */
-  const short int
+  const signed char
   cssselector_parser::yycheck_[] =
   {
-        11,    93,    25,    13,    13,    25,     8,    18,    19,    13,
-      14,    22,    23,    13,    34,    14,    27,    17,    18,     9,
-       6,     7,     0,    13,    28,    35,    36,    13,    13,    19,
-      41,    42,    41,    33,    20,    29,    47,   129,    38,    39,
-      40,   159,   134,     6,     7,    30,    57,    58,    33,    60,
-      61,    41,    42,    44,    45,    66,    67,    80,   176,    70,
-      80,    81,    18,   181,    84,    13,    77,    13,    14,     0,
-      18,    13,    18,    13,    17,    18,    87,    88,    18,    90,
-      91,    29,    16,    94,    18,    96,    17,    18,    99,   100,
-      33,    31,    23,    13,    25,    38,    39,    40,    18,   110,
-     111,    29,    33,    18,    32,    17,    18,    38,    39,    40,
-     121,    13,    13,   124,   125,   126,    18,    18,    17,    31,
-     131,    33,    30,    33,     3,   136,    38,    39,    40,    43,
-     107,   142,    11,    12,    33,   146,    15,   148,   149,   150,
-      39,    40,    95,    22,   155,    24,    13,    26,    27,    13,
-     161,    18,    17,    18,    18,    30,    29,    32,     3,    32,
-     128,   172,   173,   174,   175,    29,    11,    12,    33,    14,
-      15,    16,    17,    18,    39,    40,   187,    22,    30,    24,
-      32,    26,    27,    28,    28,    29,    30,    32,     3,    34,
-      35,    59,    37,    29,    62,    31,    11,    12,    43,    14,
-      15,    16,    17,    18,   168,    79,    21,    22,    29,    24,
-      31,    26,    27,    28,   158,     3,    29,    32,    31,    34,
-      35,    79,    37,    11,    12,    13,    14,    15,    16,    17,
-      18,    -1,    -1,    -1,    22,    -1,    24,    -1,    26,    27,
-      28,    -1,     3,    -1,    -1,    -1,    -1,    35,    -1,    37,
-      11,    12,    -1,    14,    15,    16,    17,    18,    -1,    -1,
-      -1,    22,    -1,    24,    -1,    26,    27,    28,    -1,    -1,
-      -1,    -1,    -1,    -1,    35,    -1,    37
+        17,     4,    13,     0,    13,    18,     4,    10,    25,     9,
+      27,    28,    26,    13,    43,    29,    33,    13,    14,    19,
+      13,    13,    18,    40,    17,    18,    18,    17,    18,    16,
+      41,    18,    35,    36,    51,    32,    39,    35,    55,    17,
+      33,    41,    42,    33,    -1,    38,    39,    40,    38,    39,
+      40,    17,    18,    17,    18,    33,    13,    34,    13,    34,
+      -1,    39,    40,    18,    -1,    -1,    -1,    33,    -1,    33,
+      -1,    -1,    38,    39,    40,    39,    40,    -1,    35,    36
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -889,25 +761,12 @@ namespace css
   const unsigned char
   cssselector_parser::yystos_[] =
   {
-         0,     8,    45,    46,    14,     0,    47,    29,     6,     7,
-      13,    20,    48,    51,    86,    49,    50,    13,    14,    28,
-      17,    18,    23,    25,    33,    38,    39,    40,    52,    56,
-      63,    64,    65,    66,    67,    68,    69,    70,    71,    72,
-      75,     6,     7,    86,    86,    86,    86,    16,    18,    76,
-      68,    71,    18,    86,    50,    50,    50,    30,    32,    13,
-      35,    36,    60,    68,    86,    86,    18,    29,    54,    55,
-      29,    54,    54,    30,    33,    58,    86,    18,    86,    86,
-      38,    67,    86,    86,    67,    86,    86,    29,    32,    86,
-      29,    30,    57,    86,    18,    30,    18,    77,    86,    18,
-      31,    62,    78,    79,    65,    66,    86,    86,    86,    86,
-      29,    31,    79,    86,    57,    86,    43,     9,    19,    41,
-      42,    73,    86,    86,    33,    29,    31,    55,    53,    86,
-      86,    31,    86,    86,    86,    86,    31,    63,    79,    86,
-      14,    18,    74,     3,    11,    12,    14,    15,    16,    17,
-      18,    22,    24,    26,    27,    28,    35,    37,    61,    81,
-      82,    83,    84,    85,    79,    86,    86,    86,    86,    86,
-      86,    86,    83,    21,    32,    34,    59,    80,    82,    86,
-      41,    81,    86,    86,    86,    86,    82,    43,    86
+         0,    17,    18,    33,    38,    39,    40,    46,    47,    48,
+      49,    50,    51,    52,    53,    54,    57,    16,    18,    58,
+      50,    53,    18,    60,     0,    32,    13,    35,    36,    45,
+      50,    60,    13,    18,    60,    38,    49,    60,    60,    49,
+      18,    59,    60,    47,    48,    60,    43,     9,    19,    41,
+      42,    55,    60,    14,    18,    56,    60,    41
   };
 
 #if YYDEBUG
@@ -928,34 +787,20 @@ namespace css
   const unsigned char
   cssselector_parser::yyr1_[] =
   {
-         0,    44,    45,    46,    46,    47,    47,    47,    47,    48,
-      48,    49,    49,    49,    49,    50,    50,    50,    51,    51,
-      51,    51,    52,    53,    53,    54,    54,    55,    56,    56,
-      57,    57,    57,    57,    58,    59,    59,    60,    60,    61,
-      61,    62,    63,    63,    64,    64,    64,    64,    65,    65,
-      65,    65,    66,    66,    67,    67,    67,    67,    67,    68,
-      68,    68,    68,    69,    70,    71,    72,    72,    73,    73,
-      73,    74,    74,    75,    76,    76,    77,    77,    78,    78,
-      78,    79,    79,    80,    81,    81,    81,    82,    82,    82,
-      82,    82,    82,    82,    83,    83,    83,    83,    83,    83,
-      83,    83,    84,    85,    86,    86
+         0,    44,    45,    45,    46,    46,    46,    46,    47,    47,
+      47,    47,    48,    48,    49,    49,    49,    49,    49,    50,
+      50,    50,    50,    51,    52,    53,    54,    54,    55,    55,
+      55,    56,    56,    57,    58,    58,    59,    59,    60,    60
   };
 
   /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
   const unsigned char
   cssselector_parser::yyr2_[] =
   {
-         0,     2,     4,     0,     3,     0,     2,     2,     2,     0,
-       2,     0,     3,     3,     3,     0,     3,     3,     7,     7,
-       6,     6,     8,     0,     2,     1,     4,     2,     7,     6,
-       2,     1,     4,     3,     3,     2,     2,     2,     2,     1,
-       1,     2,     6,     5,     1,     1,     4,     4,     1,     3,
+         0,     2,     2,     2,     1,     1,     4,     4,     1,     3,
        3,     2,     0,     1,     2,     1,     2,     1,     2,     1,
        1,     1,     1,     1,     2,     1,     5,     9,     1,     1,
-       1,     1,     1,     2,     1,     4,     0,     2,     1,     4,
-       3,     5,     4,     2,     1,     3,     2,     3,     2,     2,
-       2,     2,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     5,     2,     0,     2
+       1,     1,     1,     2,     1,     4,     0,     2,     0,     2
   };
 
 #if YYDEBUG || YYERROR_VERBOSE || YYTOKEN_TABLE
@@ -970,16 +815,11 @@ namespace css
   "IMPORT_SYM", "IMPORTANT_SYM", "LENGTH", "MEDIA_SYM", "NUMBER",
   "PAGE_SYM", "PERCENTAGE", "TIME", "URI", "';'", "'{'", "'}'", "','",
   "':'", "'/'", "'+'", "'>'", "'-'", "'*'", "'.'", "'['", "']'", "'='",
-  "')'", "$accept", "stylesheet", "charset", "comments", "import_block",
-  "body", "subcomments", "import", "media", "rulesets", "media_list",
-  "medium", "page", "page_declarations", "pseudo_page", "operator",
-  "combinator", "unary_operator", "property", "ruleset", "selector_list",
-  "complex_selector", "universal_selector", "compound_selector",
-  "simple_selector", "id_selector", "class_selector", "type_selector",
-  "attribute_selector", "attrib_eq", "attrib_value",
-  "pseudo_class_selector", "pseudo_block", "pseudo_block_function_ident",
-  "declarations", "declaration", "prio", "expr", "term", "term_numeral",
-  "function", "hexcolor", "spaces", 0
+  "')'", "$accept", "combinator", "selector_list", "complex_selector",
+  "universal_selector", "compound_selector", "simple_selector",
+  "id_selector", "class_selector", "type_selector", "attribute_selector",
+  "attrib_eq", "attrib_value", "pseudo_class_selector", "pseudo_block",
+  "pseudo_block_function_ident", "spaces", 0
   };
 #endif
 
@@ -988,76 +828,39 @@ namespace css
   const cssselector_parser::rhs_number_type
   cssselector_parser::yyrhs_[] =
   {
-        45,     0,    -1,    46,    47,    48,    49,    -1,    -1,     8,
-      14,    29,    -1,    -1,    47,    13,    -1,    47,     7,    -1,
-      47,     6,    -1,    -1,    51,    50,    -1,    -1,    49,    63,
-      50,    -1,    49,    52,    50,    -1,    49,    56,    50,    -1,
-      -1,    50,     7,    86,    -1,    50,     6,    86,    -1,    20,
-      86,    14,    86,    54,    29,    86,    -1,    20,    86,    28,
-      86,    54,    29,    86,    -1,    20,    86,    14,    86,    29,
-      86,    -1,    20,    86,    28,    86,    29,    86,    -1,    23,
-      86,    54,    30,    86,    53,    31,    86,    -1,    -1,    53,
-      63,    -1,    55,    -1,    54,    32,    86,    55,    -1,    18,
-      86,    -1,    25,    86,    58,    30,    57,    31,    86,    -1,
-      25,    86,    30,    57,    31,    86,    -1,    86,    79,    -1,
-      86,    -1,    57,    29,    86,    79,    -1,    57,    29,    86,
-      -1,    33,    18,    86,    -1,    34,    86,    -1,    32,    86,
-      -1,    35,    86,    -1,    36,    86,    -1,    37,    -1,    35,
-      -1,    18,    86,    -1,    64,    30,    86,    78,    31,    86,
-      -1,    64,    30,    86,    31,    86,    -1,    65,    -1,    66,
-      -1,    64,    32,    86,    65,    -1,    64,    32,    86,    66,
-      -1,    67,    -1,    65,    60,    67,    -1,    65,    13,    67,
-      -1,    65,    13,    -1,    -1,    38,    -1,    38,    71,    -1,
-      71,    -1,    38,    68,    -1,    68,    -1,    67,    68,    -1,
-      72,    -1,    70,    -1,    69,    -1,    75,    -1,    17,    -1,
-      39,    18,    -1,    18,    -1,    40,    86,    18,    86,    41,
-      -1,    40,    86,    18,    86,    73,    86,    74,    86,    41,
-      -1,    42,    -1,    19,    -1,     9,    -1,    18,    -1,    14,
-      -1,    33,    76,    -1,    18,    -1,    16,    86,    77,    43,
-      -1,    -1,    18,    86,    -1,    79,    -1,    78,    29,    86,
-      79,    -1,    78,    29,    86,    -1,    62,    33,    86,    81,
-      80,    -1,    62,    33,    86,    81,    -1,    21,    86,    -1,
-      82,    -1,    81,    59,    82,    -1,    81,    82,    -1,    61,
-      83,    86,    -1,    83,    86,    -1,    14,    86,    -1,    18,
-      86,    -1,    28,    86,    -1,    85,    -1,    84,    -1,    24,
-      -1,    26,    -1,    22,    -1,    11,    -1,    12,    -1,     3,
-      -1,    27,    -1,    15,    -1,    16,    86,    81,    43,    86,
-      -1,    17,    86,    -1,    -1,    86,    13,    -1
+        46,     0,    -1,    35,    60,    -1,    36,    60,    -1,    47,
+      -1,    48,    -1,    46,    32,    60,    47,    -1,    46,    32,
+      60,    48,    -1,    49,    -1,    47,    45,    49,    -1,    47,
+      13,    49,    -1,    47,    13,    -1,    -1,    38,    -1,    38,
+      53,    -1,    53,    -1,    38,    50,    -1,    50,    -1,    49,
+      50,    -1,    54,    -1,    52,    -1,    51,    -1,    57,    -1,
+      17,    -1,    39,    18,    -1,    18,    -1,    40,    60,    18,
+      60,    41,    -1,    40,    60,    18,    60,    55,    60,    56,
+      60,    41,    -1,    42,    -1,    19,    -1,     9,    -1,    18,
+      -1,    14,    -1,    33,    58,    -1,    18,    -1,    16,    60,
+      59,    43,    -1,    -1,    18,    60,    -1,    -1,    60,    13,
+      -1
   };
 
   /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
      YYRHS.  */
-  const unsigned short int
+  const unsigned char
   cssselector_parser::yyprhs_[] =
   {
-         0,     0,     3,     8,     9,    13,    14,    17,    20,    23,
-      24,    27,    28,    32,    36,    40,    41,    45,    49,    57,
-      65,    72,    79,    88,    89,    92,    94,    99,   102,   110,
-     117,   120,   122,   127,   131,   135,   138,   141,   144,   147,
-     149,   151,   154,   161,   167,   169,   171,   176,   181,   183,
-     187,   191,   194,   195,   197,   200,   202,   205,   207,   210,
-     212,   214,   216,   218,   220,   223,   225,   231,   241,   243,
-     245,   247,   249,   251,   254,   256,   261,   262,   265,   267,
-     272,   276,   282,   287,   290,   292,   296,   299,   303,   306,
-     309,   312,   315,   317,   319,   321,   323,   325,   327,   329,
-     331,   333,   335,   341,   344,   345
+         0,     0,     3,     6,     9,    11,    13,    18,    23,    25,
+      29,    33,    36,    37,    39,    42,    44,    47,    49,    52,
+      54,    56,    58,    60,    62,    65,    67,    73,    83,    85,
+      87,    89,    91,    93,    96,    98,   103,   104,   107,   108
   };
 
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
   const unsigned short int
   cssselector_parser::yyrline_[] =
   {
-         0,    89,    89,    92,    94,   100,   102,   103,   104,   107,
-     109,   112,   114,   115,   116,   119,   121,   122,   126,   127,
-     128,   129,   133,   136,   138,   142,   143,   147,   152,   153,
-     157,   158,   159,   160,   164,   168,   169,   173,   177,   184,
-     185,   189,   196,   197,   201,   202,   203,   204,   208,   209,
-     210,   211,   215,   217,   221,   222,   223,   224,   225,   229,
-     230,   231,   232,   236,   243,   250,   257,   261,   268,   270,
-     272,   277,   279,   284,   288,   289,   292,   294,   298,   299,
-     300,   304,   308,   315,   319,   323,   324,   330,   331,   332,
-     336,   340,   344,   345,   349,   350,   351,   352,   353,   354,
-     355,   356,   360,   369,   372,   374
+         0,    91,   175,   179,   203,   204,   205,   206,   210,   211,
+     212,   213,   217,   219,   223,   224,   225,   226,   227,   231,
+     232,   233,   234,   238,   245,   252,   259,   263,   270,   272,
+     274,   279,   281,   286,   290,   291,   294,   296,   374,   376
   };
 
   // Print the state stack on the debug stream.
@@ -1134,10 +937,10 @@ namespace css
   }
 
   const int cssselector_parser::yyeof_ = 0;
-  const int cssselector_parser::yylast_ = 276;
-  const int cssselector_parser::yynnts_ = 43;
+  const int cssselector_parser::yylast_ = 79;
+  const int cssselector_parser::yynnts_ = 17;
   const int cssselector_parser::yyempty_ = -2;
-  const int cssselector_parser::yyfinal_ = 5;
+  const int cssselector_parser::yyfinal_ = 24;
   const int cssselector_parser::yyterror_ = 1;
   const int cssselector_parser::yyerrcode_ = 256;
   const int cssselector_parser::yyntokens_ = 44;
@@ -1147,7 +950,7 @@ namespace css
 
 } // namespace css
 
-#line 377 "css/cssselector.yy"
+#line 379 "css/cssselector.yy"
 
 
 
