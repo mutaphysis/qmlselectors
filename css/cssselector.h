@@ -20,6 +20,10 @@ public:
                         const std::string& sname = "string stream");
 
 protected:
+    void cssparser_handle_new_selector_list();
+    void cssparser_handle_new_compound_selector();
+    void cssparser_handle_new_simple_selector();
+    void cssparser_handle_new_universal_selector();
     void cssparser_handle_id_selector(const std::string* id);
     void cssparser_handle_charset(const std::string* id);
     void cssparser_handle_class_selector(const std::string* id);

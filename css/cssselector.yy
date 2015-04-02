@@ -204,6 +204,9 @@ selector_list
     | universal_selector
     | selector_list ',' spaces complex_selector
     | selector_list ',' spaces universal_selector
+    {
+        driver.cssparser_handle_new_selector_list();
+    }
 ;
 
 complex_selector // : simple_selector [ combinator selector | S+ [ combinator? selector ]? ]? ;
@@ -217,6 +220,9 @@ complex_selector // : simple_selector [ combinator selector | S+ [ combinator? s
 universal_selector
     :
     | '*'
+    {
+        driver.cssparser_handle_new_universal_selector();
+    }
 ;
 
 compound_selector // : element_name [ HASH | class | attrib | pseudo ]* | [ HASH | class | attrib | pseudo ]+ ;
@@ -225,6 +231,9 @@ compound_selector // : element_name [ HASH | class | attrib | pseudo ]* | [ HASH
     | '*' simple_selector
     | simple_selector
     | compound_selector simple_selector
+    {
+        driver.cssparser_handle_new_compound_selector();
+    }
 ;
 
 simple_selector
@@ -232,6 +241,9 @@ simple_selector
     | class_selector
     | id_selector
     | pseudo_class_selector
+    {
+        driver.cssparser_handle_new_simple_selector();
+    }
 ;
 
 id_selector

@@ -414,69 +414,97 @@ namespace css
     ;}
     break;
 
+  case 7:
+#line 207 "css/cssselector.yy"
+    {
+        driver.cssparser_handle_new_selector_list();
+    ;}
+    break;
+
+  case 13:
+#line 223 "css/cssselector.yy"
+    {
+        driver.cssparser_handle_new_universal_selector();
+    ;}
+    break;
+
+  case 18:
+#line 234 "css/cssselector.yy"
+    {
+        driver.cssparser_handle_new_compound_selector();
+    ;}
+    break;
+
+  case 22:
+#line 244 "css/cssselector.yy"
+    {
+        driver.cssparser_handle_new_simple_selector();
+    ;}
+    break;
+
   case 23:
-#line 239 "css/cssselector.yy"
+#line 251 "css/cssselector.yy"
     {
         driver.cssparser_handle_id_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
   case 24:
-#line 246 "css/cssselector.yy"
+#line 258 "css/cssselector.yy"
     {
         driver.cssparser_handle_class_selector((yysemantic_stack_[(2) - (2)].stringVal));
     ;}
     break;
 
   case 25:
-#line 253 "css/cssselector.yy"
+#line 265 "css/cssselector.yy"
     {
         driver.cssparser_handle_type_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
   case 26:
-#line 260 "css/cssselector.yy"
+#line 272 "css/cssselector.yy"
     {
         driver.cssparser_handle_empty_attribute_selector((yysemantic_stack_[(5) - (3)].stringVal));
     ;}
     break;
 
   case 27:
-#line 264 "css/cssselector.yy"
+#line 276 "css/cssselector.yy"
     {
         driver.cssparser_handle_attribute_selector((yysemantic_stack_[(9) - (3)].stringVal), (yysemantic_stack_[(9) - (5)].stringVal), (yysemantic_stack_[(9) - (7)].stringVal));
     ;}
     break;
 
   case 28:
-#line 271 "css/cssselector.yy"
+#line 283 "css/cssselector.yy"
     {   (yyval.stringVal) = new std::string("=");    ;}
     break;
 
   case 29:
-#line 273 "css/cssselector.yy"
+#line 285 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 30:
-#line 275 "css/cssselector.yy"
+#line 287 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 31:
-#line 280 "css/cssselector.yy"
+#line 292 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 32:
-#line 282 "css/cssselector.yy"
+#line 294 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
 
     /* Line 675 of lalr1.cc.  */
-#line 480 "css/gen/cssselector.parser.cc"
+#line 508 "css/gen/cssselector.parser.cc"
 	default: break;
       }
     YY_SYMBOL_PRINT ("-> $$ =", yyr1_[yyn], &yyval, &yyloc);
@@ -857,10 +885,10 @@ namespace css
   const unsigned short int
   cssselector_parser::yyrline_[] =
   {
-         0,    91,   175,   179,   203,   204,   205,   206,   210,   211,
-     212,   213,   217,   219,   223,   224,   225,   226,   227,   231,
-     232,   233,   234,   238,   245,   252,   259,   263,   270,   272,
-     274,   279,   281,   286,   290,   291,   294,   296,   374,   376
+         0,    91,   175,   179,   203,   204,   205,   206,   213,   214,
+     215,   216,   220,   222,   229,   230,   231,   232,   233,   240,
+     241,   242,   243,   250,   257,   264,   271,   275,   282,   284,
+     286,   291,   293,   298,   302,   303,   306,   308,   386,   388
   };
 
   // Print the state stack on the debug stream.
@@ -950,7 +978,7 @@ namespace css
 
 } // namespace css
 
-#line 379 "css/cssselector.yy"
+#line 391 "css/cssselector.yy"
 
 
 
