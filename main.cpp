@@ -5,11 +5,7 @@
 
 #include <sstream>
 
-extern "C" {
-    #include "cssselector.tab.h"
-
-    extern int yyparse();
-}
+#include "cssselector.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +16,7 @@ int main(int argc, char *argv[])
 
     std::string selector = "#name Type.class[@attrib= \"some value\" ]";
 
-    yyparse();
+
 
     qDebug() << engine.rootObjects();
 

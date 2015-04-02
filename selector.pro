@@ -4,15 +4,22 @@ QT += qml quick
 
 SOURCES += \
     main.cpp \
-    lex.yy.c \
-    cssselector.tab.c
+    css/gen/cssselector.scanner.cc \
+    css/gen/cssselector.parser.cc \
+    css/cssselector.cpp
 
 HEADERS += \
-    cssparser.h \
-    cssselector.tab.h
+    css/gen/cssselector.parser.hh \
+    css/gen/location.hh \
+    css/gen/position.hh \
+    css/gen/stack.hh \
+    css/cssselector.h \
+    css/cssselectorscanner.h
 
 # flex --header-file=lexer.h cssselector.l
-OTHER_FILES += cssselector.l cssselector.y
+OTHER_FILES += \
+    css/cssselector.ll \
+    css/cssselector.yy
 
 RESOURCES += qml.qrc
 
@@ -23,3 +30,6 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+DISTFILES += \
+    cssselector.yy

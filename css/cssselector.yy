@@ -1,55 +1,87 @@
 %{
-
-#include <stdio.h>
-#include "cssparser.h"
-void yyerror(const char* msg) {
-   fprintf(stderr, "%s\n", msg);
-}
-
-int yylex();
+#include <string>
 %}
+
+%skeleton "lalr1.cc" /* -*- C++ -*- */
+
+%name-prefix="css"
+
+%require "2.3"
+
+%debug
+
+%defines
+
+%parse-param { class CssSelector& driver }
 
 %start stylesheet
 
-%union{
-    char* string;
+%define "parser_class_name" "cssselector_parser"
+
+%union {
+    int                         integerVal;
+    double                      doubleVal;
+    std::string*                stringVal;
 }
 
-%token <string> ANGLE
-%token <string> BAD_STRING
-%token <string> BAD_URI
+%error-verbose
+
+
+%locations
+%initial-action
+{
+  // Initialize the initial location.
+/*  @$.begin.filename = @$.end.filename = &driver._file;*/
+};
+
+%token                  END                  0                        "end of file"
+%token <stringVal>    ANGLE
+%token <stringVal>    BAD_STRING
+%token <stringVal>    BAD_URI
 %token CDC CDO CHARSET_SYM
-%token <string> DASHMATCH
+%token <stringVal>    DASHMATCH
 %token DIMENSION
 %token EMS EXS
 %token S
-%token <string> STRING
-%token <string> FREQ
+%token <stringVal>    STRING
+%token <stringVal>    FREQ
 %token FUNCTION
-%token <string> HASH
-%token <string> IDENT
-%token <string> INCLUDES
-%token IMPORT_SYM IMPORTANT_SYM
-%token <string> LENGTH
+%token <stringVal>    HASH
+%token <stringVal>    IDENT
+%token <stringVal>    INCLUDES
+%token                  IMPORT_SYM IMPORTANT_SYM
+%token <stringVal>    LENGTH
 %token MEDIA_SYM
-%token <string> NUMBER
+%token <stringVal>    NUMBER
 %token PAGE_SYM
-%token <string> PERCENTAGE
-%token <string> TIME
-%token <string> URI
+%token <stringVal>    PERCENTAGE
+%token <stringVal>    TIME
+%token <stringVal>    URI
 
-%type <string> type_selector
-%type <string> id_selector
-%type <string> class_selector
+%type <stringVal>     type_selector
+%type <stringVal>     id_selector
+%type <stringVal>     class_selector
 
-%type <string> attrib_eq
-%type <string> attrib_value
+%type <stringVal>     attrib_eq
+%type <stringVal>     attrib_value
 
-%type <string> term
-%type <string> property
-%type <string> expr
+%type <stringVal> term
+%type <stringVal> property
+%type <stringVal> expr
+
+
+%{
+#include "css/cssselectorscanner.h"
+#include "css/cssselector.h"
+
+#undef yylex
+#define yylex driver.lexer->lex
+%}
+
 
 %%
+
+/*** Grammar Rules ***/
 
 stylesheet // : [ CHARSET_SYM STRING ';' ]?
            //   [S|CDO|CDC]* [ import [ CDO S* | CDC S* ]* ]*
@@ -61,7 +93,7 @@ charset
     :
     | CHARSET_SYM STRING ';'
     {
-        cssparser_handle_charset($2);
+        driver.cssparser_handle_charset($2);
     }
 ;
 
@@ -203,38 +235,38 @@ simple_selector
 id_selector
     : HASH
     {
-        cssparser_handle_id_selector($1);
+        driver.cssparser_handle_id_selector($1);
     }
 ;
 
 class_selector // : '.' IDENT ;
     : '.' IDENT
     {
-        cssparser_handle_class_selector($2);
+        driver.cssparser_handle_class_selector($2);
     }
 ;
 
 type_selector // : IDENT | '*' ;
     : IDENT
     {
-        cssparser_handle_type_selector($1);
+        driver.cssparser_handle_type_selector($1);
     }
 ;
 
 attribute_selector // : '[' S* IDENT S* [ [ '=' | INCLUDES | DASHMATCH ] S* [ IDENT | STRING ] S* ]? ']';
     : '[' spaces IDENT spaces ']'
     {
-        cssparser_handle_empty_attribute_selector($3);
+        driver.cssparser_handle_empty_attribute_selector($3);
     }
     | '[' spaces IDENT spaces attrib_eq spaces attrib_value spaces ']'
     {
-        cssparser_handle_attribute_selector($3, $5, $7);
+        driver.cssparser_handle_attribute_selector($3, $5, $7);
     }
 ;
 
 attrib_eq
     : '='
-    {   $$ = "=";    }
+    {   $$ = new std::string("=");    }
     | INCLUDES
     {   $$ = $1;    }
     | DASHMATCH
@@ -345,3 +377,7 @@ spaces
 %%
 
 
+void css::cssselector_parser::error (const location_type& l, const std::string& m)
+{
+    driver.error(l, m);
+}
