@@ -7,6 +7,7 @@ SOURCES += \
     css/gen/cssselector.parser.cc \
     css/cssselector.cpp \
     matchers.cpp \
+    matchergenerator.cpp \
     main.cpp
 
 HEADERS += \
@@ -16,7 +17,8 @@ HEADERS += \
     css/gen/stack.hh \
     css/cssselector.h \
     css/cssselectorscanner.h \
-    matchers.h
+    matchers.h \
+    matchergenerator.h
 
 # flex --header-file=lexer.h cssselector.l
 OTHER_FILES += \

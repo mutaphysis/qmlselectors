@@ -93,7 +93,7 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 "~="                    {return token::INCLUDES;}
 "|="                    {return token::DASHMATCH;}
 
-{string}                { yylval->stringVal = new std::string(yytext, yyleng);
+{string}                { yylval->stringVal = new std::string(yytext + 1, yyleng - 2);
                           return token::STRING;
                         }
 
@@ -115,14 +115,14 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 {num}{E}{M}             {return token::EMS;}
 {num}{E}{X}             {return token::EXS;}
 {num}{P}{X}             {return token::LENGTH;}
-{num}{C}{M}	        {return token::LENGTH;}
-{num}{M}{M}	        {return token::LENGTH;}
-{num}{I}{N}	        {return token::LENGTH;}
-{num}{P}{T}	        {return token::LENGTH;}
-{num}{P}{C}	        {return token::LENGTH;}
-{num}{D}{E}{G}		{return token::ANGLE;}
-{num}{R}{A}{D}		{return token::ANGLE;}
-{num}{G}{R}{A}{D}	{return token::ANGLE;}
+{num}{C}{M}             {return token::LENGTH;}
+{num}{M}{M}             {return token::LENGTH;}
+{num}{I}{N}             {return token::LENGTH;}
+{num}{P}{T}             {return token::LENGTH;}
+{num}{P}{C}             {return token::LENGTH;}
+{num}{D}{E}{G}          {return token::ANGLE;}
+{num}{R}{A}{D}          {return token::ANGLE;}
+{num}{G}{R}{A}{D}       {return token::ANGLE;}
 {num}{M}{S} 	        {return token::TIME;}
 {num}{S}                {return token::TIME;}
 {num}{H}{Z}             {return token::FREQ;}

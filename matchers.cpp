@@ -152,46 +152,46 @@ bool SiblingMatcher::match(QObject *object) const
     return false;
 }
 
+ParentMatcher::ParentMatcher(SharedMatcher initial, SharedMatcher parent, ParentMatcher::MatchMode mode) : m_initial(initial), m_parent(parent), m_mode(mode) {}
 
-bool ChildHierarchyMatcher::match(QObject *object) const
+bool ParentMatcher::match(QObject *object) const
 {
     // start with finding last one first, then look up parents
-    // should be profiled and optimized if neccessary
-
-    if (m_matchers.last()->match(object)) {
-        return matchHierarchy(object->parent(), m_matchers.size() - 2);
+    if (m_initial->match(object)) {
+        return matchParent(object->parent());
     }
 
     return false;
 }
 
 // very recursion, much useful
-bool ChildHierarchyMatcher::matchHierarchy(QObject *object, int matcherIndex) const {
-    // every matcher was matched, we have found something
-    if (matcherIndex < 0) {
-        return true;
-    }
-
+bool ParentMatcher::matchParent(QObject *parent) const
+{
     // ran out of valid objects to check, not matched
-    if (object == 0) {
+    if (parent == 0) {
         return false;
     }
 
     // apply current matcher on current object
-    if (m_matchers.at(matcherIndex)->match(object)) {
+    if (m_parent->match(parent)) {
         // use next matcher matching until run out of parents or matchers
-        return matchHierarchy(object->parent(), matcherIndex-1);
+        return true;
     }
 
     // ignore parents further up the chain
-    if (m_mode == DIRECT_CHILDREN) {
+    if (m_mode != ANY_PARENT) {
         return false;
     }
 
-    // go up in hierarchy, reapply current matcher
-    return matchHierarchy(object->parent(), matcherIndex);
+    // go up in hierarchy, reapply matcher
+    return matchParent(parent->parent());
 }
 
+QObjectList ObjectVisitor::findObjects(QObject *root, SharedMatcher matcher) const
+{
+    Q_ASSERT(!matcher.isNull());
+    return findObjects(root, *matcher.data());
+}
 
 QObjectList ObjectVisitor::findObjects(QObject *root, const Matcher &matcher) const
 {
@@ -201,12 +201,22 @@ QObjectList ObjectVisitor::findObjects(QObject *root, const Matcher &matcher) co
     return matches;
 }
 
-QObjectList ObjectVisitor::findFirstObject(QObject *root, const Matcher &matcher) const
+QObject* ObjectVisitor::findFirstObject(QObject *root, SharedMatcher matcher) const
+{
+    Q_ASSERT(!matcher.isNull());
+    return findFirstObject(root, *matcher.data());
+}
+
+QObject* ObjectVisitor::findFirstObject(QObject *root, const Matcher &matcher) const
 {
     QObjectList matches;
     collect(root, matcher, true, matches);
 
-    return matches;
+    if (matches.length() > 0) {
+        return matches.at(0);
+    } else {
+        return NULL;
+    }
 }
 
 bool ObjectVisitor::collect(QObject *object, const Matcher &matcher, bool stopOnFirst, QObjectList &matches) const
@@ -226,3 +236,5 @@ bool ObjectVisitor::collect(QObject *object, const Matcher &matcher, bool stopOn
 
     return false;
 }
+
+

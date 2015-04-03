@@ -3,10 +3,10 @@
 
 // Tell Flex the lexer's prototype
 #ifndef YY_DECL
-#define YY_DECL                                                     \
-    css::cssselector_parser::token_type css::CssSelectorScanner::lex(     \
-        css::cssselector_parser::semantic_type* yylval,              \
-        css::cssselector_parser::location_type* yylloc               \
+#define YY_DECL                                                          \
+    css::cssselector_parser::token_type css::CssSelectorScanner::lex(    \
+        css::cssselector_parser::semantic_type* yylval,                  \
+        css::cssselector_parser::location_type* yylloc                   \
     )
 #endif
 

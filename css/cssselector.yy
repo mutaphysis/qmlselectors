@@ -36,7 +36,7 @@
 /*  @$.begin.filename = @$.end.filename = &driver._file;*/
 };
 
-%token                  END                  0                        "end of file"
+%token                END                  0                        "end of file"
 %token <stringVal>    ANGLE
 %token <stringVal>    BAD_STRING
 %token <stringVal>    BAD_URI
@@ -51,7 +51,7 @@
 %token <stringVal>    HASH
 %token <stringVal>    IDENT
 %token <stringVal>    INCLUDES
-%token                  IMPORT_SYM IMPORTANT_SYM
+%token                IMPORT_SYM IMPORTANT_SYM
 %token <stringVal>    LENGTH
 %token MEDIA_SYM
 %token <stringVal>    NUMBER
@@ -81,22 +81,24 @@
 
 /*** Grammar Rules ***/
 
-combinator // : '+' S* | '>' S* ;
-    : '+' spaces
-    {
-        // TODO
-    }
-    | '>' spaces
-    {
-        // TODO
-    }
-;
 
 selector_list
     : complex_selector
+    {
+        driver.cssparser_handle_new_selector_list();
+    }
     | universal_selector
+    {
+        driver.cssparser_handle_new_selector_list();
+    }
     | selector_list ',' spaces complex_selector
+    {
+        driver.cssparser_handle_new_selector_list();
+    }
     | selector_list ',' spaces universal_selector
+    {
+        driver.cssparser_handle_new_selector_list();
+    }
 ;
 
 complex_selector // : simple_selector [ combinator selector | S+ [ combinator? selector ]? ]? ;
@@ -105,7 +107,13 @@ complex_selector // : simple_selector [ combinator selector | S+ [ combinator? s
         driver.cssparser_handle_new_compound_selector();
     }
     | complex_selector combinator compound_selector
+    {
+        driver.cssparser_handle_new_compound_selector();
+    }
     | complex_selector S compound_selector
+    {
+        driver.cssparser_handle_new_compound_selector();
+    }
     | complex_selector S
         /* for space symbols skipping */
 ;
@@ -124,6 +132,17 @@ compound_selector // : element_name [ HASH | class | attrib | pseudo ]* | [ HASH
     | '*' simple_selector
     | simple_selector
     | compound_selector simple_selector
+;
+
+combinator // : '+' S* | '>' S* ;
+    : '+' spaces
+    {
+        // TODO
+    }
+    | '>' spaces
+    {
+        // TODO
+    }
 ;
 
 simple_selector

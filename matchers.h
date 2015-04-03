@@ -166,33 +166,37 @@ private:
 };
 
 /**
- * Matches a set of matchers against a QObject and its parent hierarchy.
- * Starts with the last matcher in the MatcherList.
- * If a match is found, matches the previous matcher with the parent node.
+ * Matches two matchers against a QObject and its parent hierarchy.
+ * Starts with the initial Matcher.
+ * If a match is found, matches the parent matcher with the parent node.
  * If no match is found, continues through the hierarchy.
- * If a match is found, continues through the hierarchy with the previous matcher.
- * Finishes when all matches were found or no more parent nodes exist.
+ * If a match is found, returns true.
+ * Aborts when no more parent nodes exist.
  */
-class ChildHierarchyMatcher : public Matcher
+class ParentMatcher : public Matcher
 {
 public:
-    enum MatchMode { ALL_CHILDREN, DIRECT_CHILDREN };
+    enum MatchMode { ANY_PARENT, DIRECT_PARENT };
 
-    ChildHierarchyMatcher(const MatcherList& matchers, MatchMode mode) : m_matchers(matchers), m_mode(mode) {}
+    ParentMatcher(SharedMatcher initial, SharedMatcher parent, MatchMode mode);
 
     virtual bool match(QObject *object) const;
 private:
-    bool matchHierarchy(QObject *object, int matcherIndex) const;
+    bool matchParent(QObject *parent) const;
 
-    const MatcherList m_matchers;
+    const SharedMatcher m_initial;
+    const SharedMatcher m_parent;
     const bool m_mode;
 };
+
 
 class ObjectVisitor
 {
 public:
+    QObjectList findObjects(QObject *root, SharedMatcher matcher) const;
     QObjectList findObjects(QObject *root, const Matcher& matcher) const;
-    QObjectList findFirstObject(QObject *root, const Matcher& matcher) const;
+    QObject* findFirstObject(QObject *root, SharedMatcher matcher) const;
+    QObject* findFirstObject(QObject *root, const Matcher& matcher) const;
 
 private:
     bool collect(QObject *object, const Matcher& matcher, bool stopOnFirst, QObjectList& matches) const;

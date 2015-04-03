@@ -2731,7 +2731,7 @@ case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
 #line 96 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext, yyleng);
+{ yylval->stringVal = new std::string(yytext + 1, yyleng - 2);
                           return token::STRING;
                         }
 	YY_BREAK
