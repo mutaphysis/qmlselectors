@@ -102,7 +102,7 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 {ident}	                { yylval->stringVal = new std::string(yytext, yyleng);
                           return token::IDENT;}
 
-"#"{name}               { yylval->stringVal = new std::string(yytext, yyleng);
+"#"{name}               { yylval->stringVal = new std::string(yytext + 1, yyleng - 1);
                           return token::HASH;}
 
 @{I}{M}{P}{O}{R}{T}     {return token::IMPORT_SYM;}

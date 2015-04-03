@@ -3,10 +3,11 @@ TEMPLATE = app
 QT += qml quick
 
 SOURCES += \
-    main.cpp \
     css/gen/cssselector.scanner.cc \
     css/gen/cssselector.parser.cc \
-    css/cssselector.cpp
+    css/cssselector.cpp \
+    matchers.cpp \
+    main.cpp
 
 HEADERS += \
     css/gen/cssselector.parser.hh \
@@ -14,7 +15,8 @@ HEADERS += \
     css/gen/position.hh \
     css/gen/stack.hh \
     css/cssselector.h \
-    css/cssselectorscanner.h
+    css/cssselectorscanner.h \
+    matchers.h
 
 # flex --header-file=lexer.h cssselector.l
 OTHER_FILES += \

@@ -273,7 +273,7 @@ namespace css
     /// For each rule, the index of the first RHS symbol in \a yyrhs_.
     static const unsigned char yyprhs_[];
     /// For each rule, its source line number.
-    static const unsigned short int yyrline_[];
+    static const unsigned char yyrline_[];
     /// For each scanner token number, its symbol number.
     static const unsigned short int yytoken_number_[];
     /// Report on the debug stream that the rule \a r is going to be reduced.

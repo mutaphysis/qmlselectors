@@ -2752,7 +2752,7 @@ case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
 #line 105 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext, yyleng);
+{ yylval->stringVal = new std::string(yytext + 1, yyleng - 1);
                           return token::HASH;}
 	YY_BREAK
 case 12:

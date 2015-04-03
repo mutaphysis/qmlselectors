@@ -1,7 +1,7 @@
 #ifndef CSSSELECTORSCANNER_H
 #define CSSSELECTORSCANNER_H
 
-// Tell Flex the lexer's prototype ...
+// Tell Flex the lexer's prototype
 #ifndef YY_DECL
 #define YY_DECL                                                     \
     css::cssselector_parser::token_type css::CssSelectorScanner::lex(     \

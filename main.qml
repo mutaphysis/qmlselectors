@@ -33,6 +33,45 @@ Rectangle {
                 anchors.centerIn: parent
                 text: "Hello World 3"
             }
+
+            Text {
+                objectName: "text2"
+                anchors.centerIn: parent
+                text: "Hello World 3"
+            }
+        }
+
+        Other {
+            YetAnother {
+                Loader {
+                    sourceComponent: YetAnother {
+                        objectName: "loaderInstance1"
+                    }
+                }
+                Loader {
+                    sourceComponent: YetAnother {
+                        objectName: "loaderInstance2"
+                        property int dynamicThree: 12345
+                    }
+                }
+                Loader {
+                    sourceComponent: Rectangle {
+                        objectName: "loaderInstance3"
+                        property int text: 12345
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            objectName: "notext1"
+            anchors.centerIn: parent
+            property string text: "Hello World 3"
+        }
+
+        QtObject {
+            objectName: "notext2"
+            property var text: "Hello World 3"
         }
     }
 }
