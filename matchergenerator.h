@@ -11,10 +11,10 @@ public:
     void cssparser_begin();
 
     void cssparser_handle_new_selector_list();
-    void cssparser_handle_new_complex_selector();
     void cssparser_handle_new_compound_selector();
-    void cssparser_handle_new_simple_selector();
-    void cssparser_handle_new_universal_selector();
+
+    void cssparser_handle_universal_selector();
+    void cssparser_handle_pseudo_class_selector(const std::string *pseudo_class);
     void cssparser_handle_id_selector(const std::string *id);
     void cssparser_handle_class_selector(const std::string *cssclass);
     void cssparser_handle_type_selector(const std::string *type);

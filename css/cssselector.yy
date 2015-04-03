@@ -122,7 +122,7 @@ universal_selector
     :
     | '*'
     {
-        driver.cssparser_handle_new_universal_selector();
+        driver.cssparser_handle_universal_selector();
     }
 ;
 
@@ -206,6 +206,9 @@ pseudo_class_selector // : ':' [ IDENT | FUNCTION S* [IDENT S*]? ')' ] ;
 
 pseudo_block
     : IDENT
+    {
+        driver.cssparser_handle_pseudo_class_selector($1);
+    }
     | FUNCTION spaces pseudo_block_function_ident ')'
 ;
 

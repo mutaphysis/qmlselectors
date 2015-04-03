@@ -30,22 +30,16 @@ void CssSelector::cssparser_handle_new_compound_selector()
     m_generator->cssparser_handle_new_compound_selector();
 }
 
-void CssSelector::cssparser_handle_new_simple_selector()
+void CssSelector::cssparser_handle_pseudo_class_selector(const std::string *pseudo_class)
 {
-    std::cout << "    cssparser_handle_new_simple_selector" << std::endl;
-    m_generator->cssparser_handle_new_simple_selector();
+    std::cout << "      cssparser_handle_pseudo_class_selector " << pseudo_class->c_str() << std::endl;
+    m_generator->cssparser_handle_pseudo_class_selector(pseudo_class);
 }
 
-void CssSelector::cssparser_handle_new_complex_selector()
+void CssSelector::cssparser_handle_universal_selector()
 {
-    std::cout << "    cssparser_handle_new_complex_selector" << std::endl;
-    m_generator->cssparser_handle_new_complex_selector();
-}
-
-void CssSelector::cssparser_handle_new_universal_selector()
-{
-    std::cout << "    cssparser_handle_new_universal_selector" << std::endl;
-    m_generator->cssparser_handle_new_universal_selector();
+    std::cout << "      cssparser_handle_universal_selector" << std::endl;
+    m_generator->cssparser_handle_universal_selector();
 }
 
 void CssSelector::cssparser_handle_id_selector(const std::string *id)

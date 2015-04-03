@@ -13,11 +13,6 @@ void MatcherGenerator::cssparser_handle_new_selector_list()
     m_currentCompoundMatcher.reset();
 }
 
-void MatcherGenerator::cssparser_handle_new_complex_selector()
-{
-
-}
-
 void MatcherGenerator::cssparser_handle_new_compound_selector()
 {
     // TODO compound operators
@@ -32,14 +27,15 @@ void MatcherGenerator::cssparser_handle_new_compound_selector()
     m_currentMatcher.reset();
 }
 
-void MatcherGenerator::cssparser_handle_new_simple_selector()
-{
-}
-
-void MatcherGenerator::cssparser_handle_new_universal_selector()
+void MatcherGenerator::cssparser_handle_universal_selector()
 {
     SharedMatcher newMatcher = CreateSharedMatcher(AnyMatcher());
     updateCurrentMatcher(newMatcher);
+}
+
+void MatcherGenerator::cssparser_handle_pseudo_class_selector(const std::string *pseudo_class)
+{
+
 }
 
 void MatcherGenerator::updateCurrentMatcher(SharedMatcher newMatcher)

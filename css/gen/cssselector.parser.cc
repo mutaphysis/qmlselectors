@@ -452,7 +452,7 @@ namespace css
   case 11:
 #line 124 "css/cssselector.yy"
     {
-        driver.cssparser_handle_new_universal_selector();
+        driver.cssparser_handle_universal_selector();
     ;}
     break;
 
@@ -530,9 +530,16 @@ namespace css
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
+  case 34:
+#line 209 "css/cssselector.yy"
+    {
+        driver.cssparser_handle_pseudo_class_selector((yysemantic_stack_[(1) - (1)].stringVal));
+    ;}
+    break;
+
 
     /* Line 675 of lalr1.cc.  */
-#line 536 "css/gen/cssselector.parser.cc"
+#line 543 "css/gen/cssselector.parser.cc"
 	default: break;
       }
     YY_SYMBOL_PRINT ("-> $$ =", yyr1_[yyn], &yyval, &yyloc);
@@ -915,7 +922,7 @@ namespace css
          0,    86,    86,    90,    94,    98,   105,   109,   113,   117,
      121,   123,   130,   131,   132,   133,   134,   138,   142,   149,
      150,   151,   152,   156,   163,   170,   177,   181,   188,   190,
-     192,   197,   199,   204,   208,   209,   212,   214,   217,   219
+     192,   197,   199,   204,   208,   212,   215,   217,   220,   222
   };
 
   // Print the state stack on the debug stream.
@@ -1005,7 +1012,7 @@ namespace css
 
 } // namespace css
 
-#line 222 "css/cssselector.yy"
+#line 225 "css/cssselector.yy"
 
 
 void css::cssselector_parser::error (const location_type& l, const std::string& m)

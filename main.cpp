@@ -179,10 +179,20 @@ int main(int argc, char *argv[])
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     QObject* root = engine.rootObjects().first();
-    testParsing();
-    testMatching(root);
-    testCssMatching(root);
+//    testParsing();
+//    testMatching(root);
+//    testCssMatching(root);
 
+    {
+        ObjectVisitor vis;
+        MatcherGenerator mg;
+        std::string selector = "#text:last-child Text:nth-child(1)";
+        css::CssSelector parser(&mg);
+        parser.parse_string( selector );
+
+        MatcherList list = mg.results();
+        qDebug() << vis.findObjects(root, list.at(0));
+    }
 
 
 //    return app.exec();

@@ -16,11 +16,10 @@ public:
     virtual void cssparser_begin() = 0;
 
     virtual void cssparser_handle_new_selector_list() = 0;
-    virtual void cssparser_handle_new_complex_selector() = 0;
     virtual void cssparser_handle_new_compound_selector() = 0;
-    virtual void cssparser_handle_new_simple_selector() = 0;
-    virtual void cssparser_handle_new_universal_selector() = 0;
 
+    virtual void cssparser_handle_universal_selector() = 0;
+    virtual void cssparser_handle_pseudo_class_selector(const std::string *pseudo_class) = 0;
     virtual void cssparser_handle_id_selector(const std::string* id) = 0;
     virtual void cssparser_handle_class_selector(const std::string* cssclass) = 0;
     virtual void cssparser_handle_type_selector(const std::string* type) = 0;
@@ -41,10 +40,10 @@ public:
     bool parse_string( const std::string& input, const std::string& sname = "string stream");
 protected:
     void cssparser_handle_new_selector_list();
-    void cssparser_handle_new_complex_selector();
     void cssparser_handle_new_compound_selector();
-    void cssparser_handle_new_simple_selector();
-    void cssparser_handle_new_universal_selector();
+
+    void cssparser_handle_universal_selector();
+    void cssparser_handle_pseudo_class_selector(const std::string *pseudo_class);
     void cssparser_handle_id_selector(const std::string* id);
     void cssparser_handle_class_selector(const std::string* cssclass);
     void cssparser_handle_type_selector(const std::string* type);
