@@ -193,6 +193,7 @@ private:
 class ObjectVisitor
 {
 public:
+    QObjectList findObjects(QObject *root, MatcherList matchers) const;
     QObjectList findObjects(QObject *root, SharedMatcher matcher) const;
     QObjectList findObjects(QObject *root, const Matcher& matcher) const;
     QObject* findFirstObject(QObject *root, SharedMatcher matcher) const;

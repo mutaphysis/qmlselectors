@@ -38,7 +38,7 @@
 #include "cssselector.parser.hh"
 
 /* User implementation prologue.  */
-#line 71 "css/cssselector.yy"
+#line 74 "css/cssselector.yy"
 
 #include "css/cssselectorscanner.h"
 #include "css/cssselector.h"
@@ -401,145 +401,192 @@ namespace css
     switch (yyn)
       {
 	  case 2:
-#line 87 "css/cssselector.yy"
+#line 90 "css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 3:
-#line 91 "css/cssselector.yy"
+#line 94 "css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 4:
-#line 95 "css/cssselector.yy"
+#line 98 "css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 5:
-#line 99 "css/cssselector.yy"
+#line 102 "css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 6:
-#line 106 "css/cssselector.yy"
+#line 109 "css/cssselector.yy"
     {
         driver.cssparser_handle_new_compound_selector();
     ;}
     break;
 
   case 7:
-#line 110 "css/cssselector.yy"
+#line 113 "css/cssselector.yy"
     {
         driver.cssparser_handle_new_compound_selector();
     ;}
     break;
 
   case 8:
-#line 114 "css/cssselector.yy"
+#line 117 "css/cssselector.yy"
     {
         driver.cssparser_handle_new_compound_selector();
     ;}
     break;
 
   case 11:
-#line 124 "css/cssselector.yy"
+#line 127 "css/cssselector.yy"
     {
         driver.cssparser_handle_universal_selector();
     ;}
     break;
 
   case 17:
-#line 139 "css/cssselector.yy"
+#line 142 "css/cssselector.yy"
     {
         // TODO
     ;}
     break;
 
   case 18:
-#line 143 "css/cssselector.yy"
+#line 146 "css/cssselector.yy"
     {
         // TODO
     ;}
     break;
 
   case 23:
-#line 157 "css/cssselector.yy"
+#line 160 "css/cssselector.yy"
     {
         driver.cssparser_handle_id_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
   case 24:
-#line 164 "css/cssselector.yy"
+#line 167 "css/cssselector.yy"
     {
         driver.cssparser_handle_class_selector((yysemantic_stack_[(2) - (2)].stringVal));
     ;}
     break;
 
   case 25:
-#line 171 "css/cssselector.yy"
+#line 174 "css/cssselector.yy"
     {
         driver.cssparser_handle_type_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
   case 26:
-#line 178 "css/cssselector.yy"
+#line 181 "css/cssselector.yy"
     {
         driver.cssparser_handle_empty_attribute_selector((yysemantic_stack_[(5) - (3)].stringVal));
     ;}
     break;
 
   case 27:
-#line 182 "css/cssselector.yy"
+#line 185 "css/cssselector.yy"
     {
         driver.cssparser_handle_attribute_selector((yysemantic_stack_[(9) - (3)].stringVal), (yysemantic_stack_[(9) - (5)].stringVal), (yysemantic_stack_[(9) - (7)].stringVal));
     ;}
     break;
 
   case 28:
-#line 189 "css/cssselector.yy"
+#line 192 "css/cssselector.yy"
     {   (yyval.stringVal) = new std::string("=");    ;}
     break;
 
   case 29:
-#line 191 "css/cssselector.yy"
+#line 194 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 30:
-#line 193 "css/cssselector.yy"
+#line 196 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 31:
-#line 198 "css/cssselector.yy"
+#line 201 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 32:
-#line 200 "css/cssselector.yy"
+#line 203 "css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 34:
-#line 209 "css/cssselector.yy"
+#line 212 "css/cssselector.yy"
     {
         driver.cssparser_handle_pseudo_class_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
+  case 35:
+#line 216 "css/cssselector.yy"
+    {
+        driver.cssparser_handle_pseudo_class_function_selector((yysemantic_stack_[(4) - (1)].stringVal), (yysemantic_stack_[(4) - (3)].stringVal));
+    ;}
+    break;
+
+  case 36:
+#line 223 "css/cssselector.yy"
+    {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
+    break;
+
+  case 37:
+#line 225 "css/cssselector.yy"
+    {   (yyval.stringVal) = (yysemantic_stack_[(3) - (1)].stringVal);    ;}
+    break;
+
+  case 38:
+#line 230 "css/cssselector.yy"
+    {   (yyval.stringVal) = new std::string("+");    ;}
+    break;
+
+  case 39:
+#line 232 "css/cssselector.yy"
+    {   (yyval.stringVal) = new std::string("-");    ;}
+    break;
+
+  case 40:
+#line 234 "css/cssselector.yy"
+    {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
+    break;
+
+  case 41:
+#line 236 "css/cssselector.yy"
+    {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
+    break;
+
+  case 42:
+#line 238 "css/cssselector.yy"
+    {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
+    break;
+
+  case 43:
+#line 240 "css/cssselector.yy"
+    {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
+    break;
+
 
     /* Line 675 of lalr1.cc.  */
-#line 543 "css/gen/cssselector.parser.cc"
+#line 590 "css/gen/cssselector.parser.cc"
 	default: break;
       }
     YY_SYMBOL_PRINT ("-> $$ =", yyr1_[yyn], &yyval, &yyloc);
@@ -746,16 +793,17 @@ namespace css
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-  const signed char cssselector_parser::yypact_ninf_ = -21;
+  const signed char cssselector_parser::yypact_ninf_ = -22;
   const signed char
   cssselector_parser::yypact_[] =
   {
-        25,   -21,   -21,    35,   -16,   -21,    31,     1,    -9,   -21,
-      40,   -21,   -21,   -21,   -21,   -21,   -21,   -21,   -21,   -21,
-      -4,   -21,   -21,   -21,   -21,   -21,    33,   -21,   -21,    33,
-     -21,   -21,   -21,     7,    11,    35,    40,    -5,    -5,    40,
-       2,   -21,   -20,    -9,   -21,   -21,   -21,   -21,   -21,   -21,
-      -5,   -21,    47,   -21,   -21,   -21,    -8,   -21
+        31,   -22,   -22,    39,   -10,   -22,    42,     2,    19,   -22,
+      52,   -22,   -22,   -22,   -22,   -22,   -22,   -22,   -22,   -22,
+       3,   -22,   -22,   -22,   -22,   -22,    37,   -22,   -22,    37,
+     -22,   -22,   -22,    -1,    29,    39,    52,     7,     7,    52,
+       9,   -22,   -22,   -22,   -22,   -22,   -22,   -14,   -22,    19,
+     -22,   -22,   -22,   -22,   -22,   -22,   -22,    -1,     1,   -22,
+     -22,   -22,   -22,    -8,   -22
   };
 
   /* YYDEFACT[S] -- default rule to reduce with in state S when YYTABLE
@@ -764,20 +812,21 @@ namespace css
   const unsigned char
   cssselector_parser::yydefact_[] =
   {
-        10,    23,    25,    11,     0,    38,     0,     0,     2,     3,
+        10,    23,    25,    11,     0,    44,     0,     0,     2,     3,
        6,    15,    21,    20,    13,    19,    22,    14,    12,    24,
-       0,    38,    34,    33,     1,    38,     9,    38,    38,     0,
-      16,    39,    38,    36,    10,     0,     8,    17,    18,     7,
-       0,    38,     0,     4,     5,    30,    29,    26,    28,    38,
-      37,    35,     0,    32,    31,    38,     0,    27
+       0,    44,    34,    33,     1,    44,     9,    44,    44,     0,
+      16,    45,    44,     0,    10,     0,     8,    17,    18,     7,
+       0,    40,    42,    43,    41,    38,    39,    44,    36,     4,
+       5,    30,    29,    26,    28,    44,    35,     0,     0,    37,
+      32,    31,    44,     0,    27
   };
 
   /* YYPGOTO[NTERM-NUM].  */
   const signed char
   cssselector_parser::yypgoto_[] =
   {
-       -21,   -21,     5,    12,   -10,   -21,    -3,   -21,   -21,     0,
-     -21,   -21,   -21,   -21,   -21,   -21,   -15
+       -22,   -22,    -9,    -5,    11,   -22,     0,   -22,   -22,    -2,
+     -22,   -22,   -22,   -22,   -22,   -22,    -4,   -21
   };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -785,7 +834,7 @@ namespace css
   cssselector_parser::yydefgoto_[] =
   {
         -1,     7,     8,     9,    10,    29,    11,    12,    13,    14,
-      15,    49,    55,    16,    23,    42,    20
+      15,    55,    62,    16,    23,    47,    48,    20
   };
 
   /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -795,28 +844,30 @@ namespace css
   const unsigned char
   cssselector_parser::yytable_[] =
   {
-        17,    24,    19,    18,    26,    31,    33,    30,    31,    31,
-      34,    45,    37,    38,    32,    31,    36,    40,    51,    39,
-      31,    46,    27,    28,    31,    41,    50,    57,     1,     2,
-      25,     0,    17,    30,    52,    18,    30,    47,    48,    43,
-      56,     3,     1,     2,     4,     5,    44,    21,     6,    22,
-       1,     2,     1,     2,     0,     3,     0,     1,     4,     5,
-      31,    53,     6,    35,     0,    54,     4,     5,     4,     5,
-       6,     0,     6,     4,     5,     0,     0,     6
+        33,    18,    24,    17,    34,    31,    37,    38,    19,    41,
+      30,    40,    31,    42,    31,    60,    31,    43,    51,    61,
+      31,    32,    31,    44,    56,    49,    57,    64,    52,    50,
+      45,    25,    26,    18,    58,    17,    30,    36,    46,    30,
+      39,    63,    31,     0,    53,    54,     1,     2,     1,     2,
+      27,    28,     0,    59,     1,     2,     1,     2,    21,     3,
+      22,     3,     4,     5,     4,     5,     6,    35,     6,     1,
+       4,     5,     4,     5,     6,     0,     6,     0,     0,     0,
+       0,     0,     0,     0,     0,     4,     5,     0,     0,     6
   };
 
   /* YYCHECK.  */
   const signed char
   cssselector_parser::yycheck_[] =
   {
-         3,     0,    18,     3,    13,    13,    21,    10,    13,    13,
-      25,     9,    27,    28,    18,    13,    26,    32,    38,    29,
-      13,    19,    31,    32,    13,    18,    41,    35,    17,    18,
-      29,    -1,    35,    36,    49,    35,    39,    35,    36,    34,
-      55,    30,    17,    18,    33,    34,    34,    16,    37,    18,
-      17,    18,    17,    18,    -1,    30,    -1,    17,    33,    34,
-      13,    14,    37,    30,    -1,    18,    33,    34,    33,    34,
-      37,    -1,    37,    33,    34,    -1,    -1,    37
+        21,     3,     0,     3,    25,    13,    27,    28,    18,    10,
+      10,    32,    13,    14,    13,    14,    13,    18,     9,    18,
+      13,    18,    13,    24,    38,    34,    47,    35,    19,    34,
+      31,    29,    13,    35,    55,    35,    36,    26,    39,    39,
+      29,    62,    13,    -1,    35,    36,    17,    18,    17,    18,
+      31,    32,    -1,    57,    17,    18,    17,    18,    16,    30,
+      18,    30,    33,    34,    33,    34,    37,    30,    37,    17,
+      33,    34,    33,    34,    37,    -1,    37,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    33,    34,    -1,    -1,    37
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -824,12 +875,13 @@ namespace css
   const unsigned char
   cssselector_parser::yystos_[] =
   {
-         0,    17,    18,    30,    33,    34,    37,    40,    41,    42,
-      43,    45,    46,    47,    48,    49,    52,    45,    48,    18,
-      55,    16,    18,    53,     0,    29,    13,    31,    32,    44,
-      45,    13,    18,    55,    55,    30,    43,    55,    55,    43,
-      55,    18,    54,    41,    42,     9,    19,    35,    36,    50,
-      55,    38,    55,    14,    18,    51,    55,    35
+         0,    17,    18,    30,    33,    34,    37,    41,    42,    43,
+      44,    46,    47,    48,    49,    50,    53,    46,    49,    18,
+      57,    16,    18,    54,     0,    29,    13,    31,    32,    45,
+      46,    13,    18,    57,    57,    30,    44,    57,    57,    44,
+      57,    10,    14,    18,    24,    31,    39,    55,    56,    42,
+      43,     9,    19,    35,    36,    51,    38,    57,    57,    56,
+      14,    18,    52,    57,    35
   };
 
 #if YYDEBUG
@@ -841,7 +893,7 @@ namespace css
          0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
      275,   276,   277,   278,   279,   280,   281,   282,   283,    44,
-      42,    43,    62,    46,    91,    93,    61,    58,    41
+      42,    43,    62,    46,    91,    93,    61,    58,    41,    45
   };
 #endif
 
@@ -849,10 +901,11 @@ namespace css
   const unsigned char
   cssselector_parser::yyr1_[] =
   {
-         0,    39,    40,    40,    40,    40,    41,    41,    41,    41,
-      42,    42,    43,    43,    43,    43,    43,    44,    44,    45,
-      45,    45,    45,    46,    47,    48,    49,    49,    50,    50,
-      50,    51,    51,    52,    53,    53,    54,    54,    55,    55
+         0,    40,    41,    41,    41,    41,    42,    42,    42,    42,
+      43,    43,    44,    44,    44,    44,    44,    45,    45,    46,
+      46,    46,    46,    47,    48,    49,    50,    50,    51,    51,
+      51,    52,    52,    53,    54,    54,    55,    55,    56,    56,
+      56,    56,    56,    56,    57,    57
   };
 
   /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -862,7 +915,8 @@ namespace css
          0,     2,     1,     1,     4,     4,     1,     3,     3,     2,
        0,     1,     2,     1,     2,     1,     2,     2,     2,     1,
        1,     1,     1,     1,     2,     1,     5,     9,     1,     1,
-       1,     1,     1,     2,     1,     4,     0,     2,     0,     2
+       1,     1,     1,     2,     1,     4,     1,     3,     1,     1,
+       1,     1,     1,     1,     0,     2
   };
 
 #if YYDEBUG || YYERROR_VERBOSE || YYTOKEN_TABLE
@@ -876,12 +930,12 @@ namespace css
   "EXS", "S", "STRING", "FREQ", "FUNCTION", "HASH", "IDENT", "INCLUDES",
   "IMPORT_SYM", "IMPORTANT_SYM", "LENGTH", "MEDIA_SYM", "NUMBER",
   "PAGE_SYM", "PERCENTAGE", "TIME", "URI", "','", "'*'", "'+'", "'>'",
-  "'.'", "'['", "']'", "'='", "':'", "')'", "$accept", "selector_list",
-  "complex_selector", "universal_selector", "compound_selector",
-  "combinator", "simple_selector", "id_selector", "class_selector",
-  "type_selector", "attribute_selector", "attrib_eq", "attrib_value",
-  "pseudo_class_selector", "pseudo_block", "pseudo_block_function_ident",
-  "spaces", 0
+  "'.'", "'['", "']'", "'='", "':'", "')'", "'-'", "$accept",
+  "selector_list", "complex_selector", "universal_selector",
+  "compound_selector", "combinator", "simple_selector", "id_selector",
+  "class_selector", "type_selector", "attribute_selector", "attrib_eq",
+  "attrib_value", "pseudo_class_selector", "pseudo_block", "expression",
+  "expression_statement", "spaces", 0
   };
 #endif
 
@@ -890,18 +944,19 @@ namespace css
   const cssselector_parser::rhs_number_type
   cssselector_parser::yyrhs_[] =
   {
-        40,     0,    -1,    41,    -1,    42,    -1,    40,    29,    55,
-      41,    -1,    40,    29,    55,    42,    -1,    43,    -1,    41,
-      44,    43,    -1,    41,    13,    43,    -1,    41,    13,    -1,
-      -1,    30,    -1,    30,    48,    -1,    48,    -1,    30,    45,
-      -1,    45,    -1,    43,    45,    -1,    31,    55,    -1,    32,
-      55,    -1,    49,    -1,    47,    -1,    46,    -1,    52,    -1,
-      17,    -1,    33,    18,    -1,    18,    -1,    34,    55,    18,
-      55,    35,    -1,    34,    55,    18,    55,    50,    55,    51,
-      55,    35,    -1,    36,    -1,    19,    -1,     9,    -1,    18,
-      -1,    14,    -1,    37,    53,    -1,    18,    -1,    16,    55,
-      54,    38,    -1,    -1,    18,    55,    -1,    -1,    55,    13,
-      -1
+        41,     0,    -1,    42,    -1,    43,    -1,    41,    29,    57,
+      42,    -1,    41,    29,    57,    43,    -1,    44,    -1,    42,
+      45,    44,    -1,    42,    13,    44,    -1,    42,    13,    -1,
+      -1,    30,    -1,    30,    49,    -1,    49,    -1,    30,    46,
+      -1,    46,    -1,    44,    46,    -1,    31,    57,    -1,    32,
+      57,    -1,    50,    -1,    48,    -1,    47,    -1,    53,    -1,
+      17,    -1,    33,    18,    -1,    18,    -1,    34,    57,    18,
+      57,    35,    -1,    34,    57,    18,    57,    51,    57,    52,
+      57,    35,    -1,    36,    -1,    19,    -1,     9,    -1,    18,
+      -1,    14,    -1,    37,    54,    -1,    18,    -1,    16,    57,
+      55,    38,    -1,    56,    -1,    55,    57,    56,    -1,    31,
+      -1,    39,    -1,    10,    -1,    24,    -1,    14,    -1,    18,
+      -1,    -1,    57,    13,    -1
   };
 
   /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
@@ -912,17 +967,19 @@ namespace css
          0,     0,     3,     5,     7,    12,    17,    19,    23,    27,
       30,    31,    33,    36,    38,    41,    43,    46,    49,    52,
       54,    56,    58,    60,    62,    65,    67,    73,    83,    85,
-      87,    89,    91,    93,    96,    98,   103,   104,   107,   108
+      87,    89,    91,    93,    96,    98,   103,   105,   109,   111,
+     113,   115,   117,   119,   121,   122
   };
 
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
   const unsigned char
   cssselector_parser::yyrline_[] =
   {
-         0,    86,    86,    90,    94,    98,   105,   109,   113,   117,
-     121,   123,   130,   131,   132,   133,   134,   138,   142,   149,
-     150,   151,   152,   156,   163,   170,   177,   181,   188,   190,
-     192,   197,   199,   204,   208,   212,   215,   217,   220,   222
+         0,    89,    89,    93,    97,   101,   108,   112,   116,   120,
+     124,   126,   133,   134,   135,   136,   137,   141,   145,   152,
+     153,   154,   155,   159,   166,   173,   180,   184,   191,   193,
+     195,   200,   202,   207,   211,   215,   222,   224,   229,   231,
+     233,   235,   237,   239,   243,   245
   };
 
   // Print the state stack on the debug stream.
@@ -966,7 +1023,7 @@ namespace css
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,    38,    30,    31,    29,     2,    33,     2,     2,     2,
+       2,    38,    30,    31,    29,    39,    33,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,    37,     2,
        2,    36,    32,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -999,20 +1056,20 @@ namespace css
   }
 
   const int cssselector_parser::yyeof_ = 0;
-  const int cssselector_parser::yylast_ = 77;
-  const int cssselector_parser::yynnts_ = 17;
+  const int cssselector_parser::yylast_ = 89;
+  const int cssselector_parser::yynnts_ = 18;
   const int cssselector_parser::yyempty_ = -2;
   const int cssselector_parser::yyfinal_ = 24;
   const int cssselector_parser::yyterror_ = 1;
   const int cssselector_parser::yyerrcode_ = 256;
-  const int cssselector_parser::yyntokens_ = 39;
+  const int cssselector_parser::yyntokens_ = 40;
 
   const unsigned int cssselector_parser::yyuser_token_number_max_ = 283;
   const cssselector_parser::token_number_type cssselector_parser::yyundef_token_ = 2;
 
 } // namespace css
 
-#line 225 "css/cssselector.yy"
+#line 248 "css/cssselector.yy"
 
 
 void css::cssselector_parser::error (const location_type& l, const std::string& m)

@@ -20,55 +20,61 @@ CssSelector::~CssSelector()
 
 void CssSelector::cssparser_handle_new_selector_list()
 {
-    std::cout << "  cssparser_handle_new_selector_list" << std::endl;
+    //std::cout << "  cssparser_handle_new_selector_list" << std::endl;
     m_generator->cssparser_handle_new_selector_list();
 }
 
 void CssSelector::cssparser_handle_new_compound_selector()
 {
-    std::cout << "    cssparser_handle_new_compound_selector" << std::endl;
+    //std::cout << "    cssparser_handle_new_compound_selector" << std::endl;
     m_generator->cssparser_handle_new_compound_selector();
 }
 
 void CssSelector::cssparser_handle_pseudo_class_selector(const std::string *pseudo_class)
 {
-    std::cout << "      cssparser_handle_pseudo_class_selector " << pseudo_class->c_str() << std::endl;
+    //std::cout << "      cssparser_handle_pseudo_class_selector " << pseudo_class->c_str() << std::endl;
     m_generator->cssparser_handle_pseudo_class_selector(pseudo_class);
+}
+
+void CssSelector::cssparser_handle_pseudo_class_function_selector(const std::string *pseudo_class, const std::string *function)
+{
+    //std::cout << "      cssparser_handle_pseudo_class_function_selector " << pseudo_class->c_str() << " " << function->c_str() << std::endl;
+    m_generator->cssparser_handle_pseudo_class_function_selector(pseudo_class, function);
 }
 
 void CssSelector::cssparser_handle_universal_selector()
 {
-    std::cout << "      cssparser_handle_universal_selector" << std::endl;
+    //std::cout << "      cssparser_handle_universal_selector" << std::endl;
     m_generator->cssparser_handle_universal_selector();
 }
 
 void CssSelector::cssparser_handle_id_selector(const std::string *id)
 {
-    std::cout << "      cssparser_handle_id_selector " << id->c_str() << std::endl;
+    //std::cout << "      cssparser_handle_id_selector " << id->c_str() << std::endl;
     m_generator->cssparser_handle_id_selector(id);
 }
 
 void CssSelector::cssparser_handle_class_selector(const std::string *cssclass)
 {
-    std::cout << "      cssparser_handle_class_selector " << cssclass->c_str() << std::endl;
+    //std::cout << "      cssparser_handle_class_selector " << cssclass->c_str() << std::endl;
     m_generator->cssparser_handle_class_selector(cssclass);
 }
 
 void CssSelector::cssparser_handle_type_selector(const std::string *type)
 {
-    std::cout << "      cssparser_handle_type_selector " << type->c_str() << std::endl;
+    //std::cout << "      cssparser_handle_type_selector " << type->c_str() << std::endl;
     m_generator->cssparser_handle_type_selector(type);
 }
 
 void CssSelector::cssparser_handle_empty_attribute_selector(const std::string *attribute)
 {
-    std::cout << "      cssparser_handle_empty_attribute_selector " << attribute->c_str() << std::endl;
+    //std::cout << "      cssparser_handle_empty_attribute_selector " << attribute->c_str() << std::endl;
     m_generator->cssparser_handle_empty_attribute_selector(attribute);
 }
 
 void CssSelector::cssparser_handle_attribute_selector(const std::string *id, const std::string *cssoperator, const std::string *value)
 {
-    std::cout << "      cssparser_handle_attribute_selector " << id->c_str() << cssoperator->c_str() << value->c_str() << std::endl;
+    //std::cout << "      cssparser_handle_attribute_selector " << id->c_str() << cssoperator->c_str() << value->c_str() << std::endl;
     m_generator->cssparser_handle_attribute_selector(id, cssoperator, value);
 }
 
@@ -86,7 +92,7 @@ bool CssSelector::parse_stream(std::istream& in, const std::string& sname)
 {
     streamname = sname;
 
-    std::cout << "Started parsing" << std::endl;
+    //std::cout << "Started parsing" << std::endl;
 
     m_generator->cssparser_begin();
 
@@ -99,9 +105,9 @@ bool CssSelector::parse_stream(std::istream& in, const std::string& sname)
     int result = parser.parse();
 
     if (result == 0) {
-        std::cout << "Finished parsing" << std::endl;
+        //std::cout << "Finished parsing" << std::endl;
     } else {
-        std::cout << "Failed parsing" << std::endl;
+        //std::cout << "Failed parsing" << std::endl;
     }
 
     m_generator->cssparser_finish(result == 0);

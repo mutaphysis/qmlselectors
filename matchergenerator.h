@@ -15,6 +15,7 @@ public:
 
     void cssparser_handle_universal_selector();
     void cssparser_handle_pseudo_class_selector(const std::string *pseudo_class);
+    void cssparser_handle_pseudo_class_function_selector(const std::string *pseudo_class, const std::string *function);
     void cssparser_handle_id_selector(const std::string *id);
     void cssparser_handle_class_selector(const std::string *cssclass);
     void cssparser_handle_type_selector(const std::string *type);

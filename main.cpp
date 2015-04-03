@@ -107,7 +107,7 @@ void testCssMatching(QObject* root)
         parser.parse_string( selector );
 
         MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
+        qDebug() << vis.findObjects(root, list);
     }
     {
         ObjectVisitor vis;
@@ -117,7 +117,7 @@ void testCssMatching(QObject* root)
         parser.parse_string( selector );
 
         MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
+        qDebug() << vis.findObjects(root, list);
     }
     {
         ObjectVisitor vis;
@@ -127,7 +127,7 @@ void testCssMatching(QObject* root)
         parser.parse_string( selector );
 
         MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
+        qDebug() << vis.findObjects(root, list);
     }
     {
         ObjectVisitor vis;
@@ -137,7 +137,7 @@ void testCssMatching(QObject* root)
         parser.parse_string( selector );
 
         MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
+        qDebug() << vis.findObjects(root, list);
     }
     {
         ObjectVisitor vis;
@@ -147,7 +147,7 @@ void testCssMatching(QObject* root)
         parser.parse_string( selector );
 
         MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
+        qDebug() << vis.findObjects(root, list);
     }
     {
         ObjectVisitor vis;
@@ -157,17 +157,27 @@ void testCssMatching(QObject* root)
         parser.parse_string( selector );
 
         MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
+        qDebug() << vis.findObjects(root, list);
     }
     {
         ObjectVisitor vis;
         MatcherGenerator mg;
-        std::string selector = "#text:last-child";
+        std::string selector = "#text:first-child";
         css::CssSelector parser(&mg);
         parser.parse_string( selector );
 
         MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
+        qDebug() << vis.findObjects(root, list);
+    }
+    {
+        ObjectVisitor vis;
+        MatcherGenerator mg;
+        std::string selector = "#text2:nth-child(1)";
+        css::CssSelector parser(&mg);
+        parser.parse_string( selector );
+
+        MatcherList list = mg.results();
+        qDebug() << vis.findObjects(root, list);
     }
 }
 
@@ -179,21 +189,9 @@ int main(int argc, char *argv[])
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     QObject* root = engine.rootObjects().first();
-//    testParsing();
-//    testMatching(root);
-//    testCssMatching(root);
-
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "#text:last-child Text:nth-child(1)";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list.at(0));
-    }
-
+    testParsing();
+    testMatching(root);
+    testCssMatching(root);
 
 //    return app.exec();
     return 0;

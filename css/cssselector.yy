@@ -42,12 +42,12 @@
 %token <stringVal>    BAD_URI
 %token CDC CDO CHARSET_SYM
 %token <stringVal>    DASHMATCH
-%token DIMENSION
+%token <stringVal>    DIMENSION
 %token EMS EXS
 %token S
 %token <stringVal>    STRING
 %token <stringVal>    FREQ
-%token FUNCTION
+%token <stringVal>    FUNCTION
 %token <stringVal>    HASH
 %token <stringVal>    IDENT
 %token <stringVal>    INCLUDES
@@ -63,6 +63,9 @@
 %type <stringVal>     type_selector
 %type <stringVal>     id_selector
 %type <stringVal>     class_selector
+
+%type <stringVal>     expression
+%type <stringVal>     expression_statement
 
 %type <stringVal>     attrib_eq
 %type <stringVal>     attrib_value
@@ -204,17 +207,37 @@ pseudo_class_selector // : ':' [ IDENT | FUNCTION S* [IDENT S*]? ')' ] ;
     : ':' pseudo_block
 ;
 
-pseudo_block
+pseudo_block // : ':' ':'? [ IDENT | functional_pseudo ]
     : IDENT
     {
         driver.cssparser_handle_pseudo_class_selector($1);
     }
-    | FUNCTION spaces pseudo_block_function_ident ')'
+    | FUNCTION spaces expression ')'
+    {
+        driver.cssparser_handle_pseudo_class_function_selector($1, $3);
+    }
 ;
 
-pseudo_block_function_ident
-    :
-    | IDENT spaces
+expression // : [ [ PLUS | '-' | DIMENSION | NUMBER | STRING | IDENT ] S* ]+
+    : expression_statement
+    {   $$ = $1;    }
+    | expression spaces expression_statement
+    {   $$ = $1;    }
+;
+
+expression_statement
+    : '+'
+    {   $$ = new std::string("+");    }
+    | '-'
+    {   $$ = new std::string("-");    }
+    | DIMENSION
+    {   $$ = $1;    }
+    | NUMBER
+    {   $$ = $1;    }
+    | STRING
+    {   $$ = $1;    }
+    | IDENT
+    {   $$ = $1;    }
 ;
 
 spaces

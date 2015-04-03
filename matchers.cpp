@@ -187,6 +187,15 @@ bool ParentMatcher::matchParent(QObject *parent) const
     return matchParent(parent->parent());
 }
 
+QObjectList ObjectVisitor::findObjects(QObject *root, MatcherList matchers) const
+{
+    QObjectList matches;
+    foreach( SharedMatcher sm, matchers) {
+        matches.append(findObjects(root, sm));
+    }
+    return matches;
+}
+
 QObjectList ObjectVisitor::findObjects(QObject *root, SharedMatcher matcher) const
 {
     Q_ASSERT(!matcher.isNull());

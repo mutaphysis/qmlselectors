@@ -112,6 +112,7 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 
 "!"({w}|{comment})*{I}{M}{P}{O}{R}{T}{A}{N}{T}          {return token::IMPORTANT_SYM;}
 
+
 {num}{E}{M}             {return token::EMS;}
 {num}{E}{X}             {return token::EXS;}
 {num}{P}{X}             {return token::LENGTH;}
@@ -127,16 +128,20 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 {num}{S}                {return token::TIME;}
 {num}{H}{Z}             {return token::FREQ;}
 {num}{K}{H}{Z}          {return token::FREQ;}
-{num}{ident}            {return token::DIMENSION;}
+{num}{ident}            { yylval->stringVal = new std::string(yytext, yyleng);
+                          return token::DIMENSION;}
 
 {num}%                  {return token::PERCENTAGE;}
-{num}                   {return token::NUMBER;}
+
+{num}                   { yylval->stringVal = new std::string(yytext, yyleng);
+                          return token::NUMBER;}
 
 "url("{w}{string}{w}")" {return token::URI;}
 "url("{w}{url}{w}")"    {return token::URI;}
 {baduri}                {return token::BAD_URI;}
 
-{ident}"("              {return token::FUNCTION;}
+{ident}"("              { yylval->stringVal = new std::string(yytext, yyleng - 1);
+                          return token::FUNCTION;}
 
 .                       { return static_cast<token_type>(*yytext); }
 

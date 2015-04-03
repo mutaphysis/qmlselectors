@@ -1,5 +1,7 @@
 #include "matchergenerator.h"
 
+#include <QDebug>
+
 void MatcherGenerator::cssparser_begin()
 {
     m_currentMatcher.reset();
@@ -35,7 +37,38 @@ void MatcherGenerator::cssparser_handle_universal_selector()
 
 void MatcherGenerator::cssparser_handle_pseudo_class_selector(const std::string *pseudo_class)
 {
+    if (qstrcmp(pseudo_class->c_str(), "last-child") == 0) {
+        SharedMatcher newMatcher = CreateSharedMatcher(IndexedMatcher(IndexedMatcher::LAST));
+        updateCurrentMatcher(newMatcher);
+        return;
+    }
 
+    if (qstrcmp(pseudo_class->c_str(), "first-child") == 0) {
+        SharedMatcher newMatcher = CreateSharedMatcher(IndexedMatcher(IndexedMatcher::FIRST));
+        updateCurrentMatcher(newMatcher);
+        return;
+    }
+
+    qWarning() << "WARNING: Unhandled pseudo_class" << pseudo_class->c_str();
+}
+
+void MatcherGenerator::cssparser_handle_pseudo_class_function_selector(const std::string *pseudo_class, const std::string *function)
+{
+    if (qstrcmp(pseudo_class->c_str(), "nth-child") == 0) {
+        bool ok;
+        int index = QString(function->c_str()).toInt(&ok);
+
+        if (ok) {
+            SharedMatcher newMatcher = CreateSharedMatcher(IndexedMatcher(index, IndexedMatcher::NTH));
+            updateCurrentMatcher(newMatcher);
+        } else {
+            qWarning() << "WARNING: Unhandled nth-child param" << function->c_str();
+        }
+
+        return;
+    }
+
+    qWarning() << "WARNING: Unhandled pseudo_class function" << pseudo_class->c_str();
 }
 
 void MatcherGenerator::updateCurrentMatcher(SharedMatcher newMatcher)
@@ -53,8 +86,9 @@ void MatcherGenerator::cssparser_handle_id_selector(const std::string *id)
     updateCurrentMatcher(newMatcher);
 }
 
-void MatcherGenerator::cssparser_handle_class_selector(const std::string */*cssclass*/)
+void MatcherGenerator::cssparser_handle_class_selector(const std::string *cssclass)
 {
+    qWarning() << "WARNING: Unhandled class" << cssclass->c_str();
 }
 
 void MatcherGenerator::cssparser_handle_type_selector(const std::string *type)
@@ -76,8 +110,7 @@ void MatcherGenerator::cssparser_handle_attribute_selector(const std::string *at
                                                                    QString(value->c_str())));
         updateCurrentMatcher(newMatcher);
     } else {
-        // TODO other operators
-        Q_ASSERT(false);
+        qWarning() << "WARNING: Unhandled operator" << cssoperator->c_str();
     }
 }
 
