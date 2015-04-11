@@ -8,7 +8,9 @@
 #include <QSharedPointer>
 
 /**
- * Matcher Interface
+ * The Matcher Interface.
+ *
+ * Allows matching QObject in the QObject tree by using the @see ObjectVisitor.
  */
 class Matcher
 {
@@ -190,18 +192,85 @@ private:
 };
 
 
+/**
+ * Collection of helper functions for applying matchers to the QObject tree.
+ */
 class ObjectVisitor
 {
 public:
 
-
+    /**
+     * Finds all the objects matching the given selector.
+     *
+     * Starts checking at the root node, and continues to check all sub-sequent children.
+     * Any object for which the selector matches, is collected and later returned.
+     *
+     * @param root The root node to start
+     * @param selector The selector to check against
+     * @return The List of objects matching the matcher
+     */
     static QObjectList findObjects(QObject *root, const QString& selector);
+    /**
+     * Finds all the objects matching any of the given matchers.
+     *
+     * Starts checking at the root node, and continues to check all sub-sequent children.
+     * Any object for which a matcher matches, is collected and later returned.
+     *
+     * @param root The root node to start
+     * @param matchers The matchers to check against
+     * @return The List of objects matching the matcher
+     */
     static QObjectList findObjects(QObject *root, const MatcherList& matchers);
+    /**
+     * Finds all the objects matching the given matcher.
+     *
+     * Starts checking at the root node, and continues to check all sub-sequent children.
+     * Any object for which the matcher matches, is collected and later returned.
+     *
+     * @param root The root node to start
+     * @param matcher The matcher to check against
+     * @return The List of objects matching the matcher
+     */
     static QObjectList findObjects(QObject *root, SharedMatcher matcher);
+    /**
+     * Finds all the objects matching the given matcher.
+     *
+     * Starts checking at the root node, and continues to check all sub-sequent children.
+     * Any object for which the matcher matches, is collected and later returned.
+     *
+     * @param root The root node to start
+     * @param matcher The matcher to check against
+     * @return The List of objects matching the matcher
+     */
     static QObjectList findObjects(QObject *root, const Matcher& matcher);
+
+    /**
+     * Like @see findObjects, but returns only the first node matching the selector.
+     * @param root The root node to start
+     * @param selector The selector to check against
+     * @return The object matched, or NULL if none matched
+     */
     static QObject* findFirstObject(QObject *root, const QString& selector);
+    /**
+     * Like @see findObjects, but returns only the first node matching any of the matchers.
+     * @param root The root node to start
+     * @param matchers The matchers to check against
+     * @return The object matched, or NULL if none matched
+     */
     static QObject* findFirstObject(QObject *root, const MatcherList& matchers);
+    /**
+     * Like @see findObjects, but returns only the first node matching the matcher.
+     * @param root The root node to start
+     * @param matcher The matcher to check against
+     * @return The object matched, or NULL if none matched
+     */
     static QObject* findFirstObject(QObject *root, SharedMatcher matcher);
+    /**
+     * Like @see findObjects, but returns only the first node matching the matcher.
+     * @param root The root node to start
+     * @param matcher The matcher to check against
+     * @return The object matched, or NULL if none matched
+     */
     static QObject* findFirstObject(QObject *root, const Matcher& matcher);
 
 private:

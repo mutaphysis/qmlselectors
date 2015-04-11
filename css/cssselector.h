@@ -58,7 +58,6 @@ protected:
     std::string streamname;
     class CssSelectorScanner* lexer;
 
-
 private:
     SelectorMatcherGenerator* m_generator;
     friend class cssselector_parser;
