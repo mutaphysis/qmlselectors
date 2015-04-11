@@ -145,3 +145,12 @@ void MatcherGenerator::clear()
     m_currentMatcher.clear();
     m_currentCompoundMatcher.clear();
 }
+
+MatcherList MatcherGenerator::parse(const QString &selector, bool *error)
+{
+    MatcherGenerator mg;
+    css::CssSelector parser(&mg);
+    *error = parser.parse_string(selector.toStdString());
+
+    return mg.results();
+}

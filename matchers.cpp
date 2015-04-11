@@ -1,5 +1,7 @@
 #include "matchers.h"
 
+#include "matchergenerator.h"
+
 #include <QDebug>
 
 const QRegularExpression QmlTypeMatcher::QML_TY4PE_RE = QRegularExpression("([a-zA-Z0-9]+)(:?_QMLTYPE_[0-9]+){0,1}(:?_QML_[0-9]+){0,1}");
@@ -12,7 +14,6 @@ bool NameMatcher::match(QObject *object) const
 {
     return object->objectName() == m_name;
 }
-
 
 NotMatcher::NotMatcher(SharedMatcher matcher) : m_matcher(matcher) {}
 
@@ -187,7 +188,14 @@ bool ParentMatcher::matchParent(QObject *parent) const
     return matchParent(parent->parent());
 }
 
-QObjectList ObjectVisitor::findObjects(QObject *root, MatcherList matchers) const
+QObjectList ObjectVisitor::findObjects(QObject *root, const QString &selector)
+{
+    bool error;
+    MatcherList matchers = MatcherGenerator::parse(selector, &error);
+    return findObjects(root, matchers);
+}
+
+QObjectList ObjectVisitor::findObjects(QObject *root, MatcherList matchers)
 {
     QObjectList matches;
     foreach( SharedMatcher sm, matchers) {
@@ -196,13 +204,13 @@ QObjectList ObjectVisitor::findObjects(QObject *root, MatcherList matchers) cons
     return matches;
 }
 
-QObjectList ObjectVisitor::findObjects(QObject *root, SharedMatcher matcher) const
+QObjectList ObjectVisitor::findObjects(QObject *root, SharedMatcher matcher)
 {
     Q_ASSERT(!matcher.isNull());
     return findObjects(root, *matcher.data());
 }
 
-QObjectList ObjectVisitor::findObjects(QObject *root, const Matcher &matcher) const
+QObjectList ObjectVisitor::findObjects(QObject *root, const Matcher &matcher)
 {
     QObjectList matches;
     collect(root, matcher, false, matches);
@@ -210,13 +218,31 @@ QObjectList ObjectVisitor::findObjects(QObject *root, const Matcher &matcher) co
     return matches;
 }
 
-QObject* ObjectVisitor::findFirstObject(QObject *root, SharedMatcher matcher) const
+QObject *ObjectVisitor::findFirstObject(QObject *root, const QString &selector)
+{
+    bool error;
+    MatcherList matchers = MatcherGenerator::parse(selector, &error);
+    return findFirstObject(root, matchers);
+}
+
+QObject *ObjectVisitor::findFirstObject(QObject *root, MatcherList matchers)
+{
+    foreach( SharedMatcher sm, matchers) {
+        QObject* match = findFirstObject(root, sm);
+        if (match) {
+            return match;
+        }
+    }
+    return NULL;
+}
+
+QObject* ObjectVisitor::findFirstObject(QObject *root, SharedMatcher matcher)
 {
     Q_ASSERT(!matcher.isNull());
     return findFirstObject(root, *matcher.data());
 }
 
-QObject* ObjectVisitor::findFirstObject(QObject *root, const Matcher &matcher) const
+QObject* ObjectVisitor::findFirstObject(QObject *root, const Matcher &matcher)
 {
     QObjectList matches;
     collect(root, matcher, true, matches);
@@ -228,8 +254,10 @@ QObject* ObjectVisitor::findFirstObject(QObject *root, const Matcher &matcher) c
     }
 }
 
-bool ObjectVisitor::collect(QObject *object, const Matcher &matcher, bool stopOnFirst, QObjectList &matches) const
+bool ObjectVisitor::collect(QObject *object, const Matcher &matcher, bool stopOnFirst, QObjectList &matches)
 {
+    Q_ASSERT(object);
+
     if (matcher.match(object)) {
         matches.append(object);
         if (stopOnFirst) {

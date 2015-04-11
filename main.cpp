@@ -65,22 +65,21 @@ void testParsing()
 
 void testMatching(QObject* root)
 {
-    ObjectVisitor vis;
-    qDebug() << vis.findObjects(root, NameMatcher("text"));
-    qDebug() << vis.findObjects(root, PropertyMatcher("text", "Hello World 3"));
-    qDebug() << vis.findObjects(root, ClassNameMatcher("QQuickRectangle"));
-    qDebug() << vis.findObjects(root, QmlTypeMatcher("QQuickRectangle"));
-    qDebug() << vis.findObjects(root, QmlTypeMatcher("YetAnother"));
+    qDebug() << ObjectVisitor::findObjects(root, NameMatcher("text"));
+    qDebug() << ObjectVisitor::findObjects(root, PropertyMatcher("text", "Hello World 3"));
+    qDebug() << ObjectVisitor::findObjects(root, ClassNameMatcher("QQuickRectangle"));
+    qDebug() << ObjectVisitor::findObjects(root, QmlTypeMatcher("QQuickRectangle"));
+    qDebug() << ObjectVisitor::findObjects(root, QmlTypeMatcher("YetAnother"));
 
-    qDebug() << vis.findObjects(root, ParentMatcher( CreateSharedMatcher(QmlTypeMatcher("QQuickRectangle")),
+    qDebug() << ObjectVisitor::findObjects(root, ParentMatcher( CreateSharedMatcher(QmlTypeMatcher("QQuickRectangle")),
                                                      CreateSharedMatcher(QmlTypeMatcher("Other")),
                                                      ParentMatcher::ANY_PARENT));
 
-    qDebug() << vis.findObjects(root, ParentMatcher( CreateSharedMatcher(QmlTypeMatcher("QQuickRectangle")),
+    qDebug() << ObjectVisitor::findObjects(root, ParentMatcher( CreateSharedMatcher(QmlTypeMatcher("QQuickRectangle")),
                                                      CreateSharedMatcher(QmlTypeMatcher("Other")),
                                                      ParentMatcher::DIRECT_PARENT));
 
-    qDebug() << vis.findObjects(root, ParentMatcher( CreateSharedMatcher(PropertyMatcher("dynamicTwo", 30)),
+    qDebug() << ObjectVisitor::findObjects(root, ParentMatcher( CreateSharedMatcher(PropertyMatcher("dynamicTwo", 30)),
                                                      CreateSharedMatcher(ParentMatcher(
                                                              CreateSharedMatcher(AndMatcher( CreateSharedMatcher(QmlTypeMatcher("QQuickLoader")),
                                                                                              CreateSharedMatcher(IndexedMatcher(1, IndexedMatcher::NTH)))),
@@ -88,97 +87,25 @@ void testMatching(QObject* root)
                                                              ParentMatcher::ANY_PARENT)),
                                                      ParentMatcher::ANY_PARENT));
 
-    qDebug() << vis.findObjects(root, SiblingMatcher( CreateSharedMatcher(QmlTypeMatcher("QQuickRectangle")),
+    qDebug() << ObjectVisitor::findObjects(root, SiblingMatcher( CreateSharedMatcher(QmlTypeMatcher("QQuickRectangle")),
                                                       CreateSharedMatcher(QmlTypeMatcher("QObject")),
                                                       SiblingMatcher::NEXT_SIBLING));
 
-    qDebug() << vis.findObjects(root, SiblingMatcher( CreateSharedMatcher(QmlTypeMatcher("QObject")),
+    qDebug() << ObjectVisitor::findObjects(root, SiblingMatcher( CreateSharedMatcher(QmlTypeMatcher("QObject")),
                                                       CreateSharedMatcher(QmlTypeMatcher("QQuickRectangle")),
                                                       SiblingMatcher::PREVIOUS_SIBLING));
 }
 
 void testCssMatching(QObject* root)
 {
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "#text";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "QQuickText";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "[text=\"Hello World 3\"]";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "QQuickText#text2";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "QQuickText#text2[text='Hello World 3']";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "#text #text #text2";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "#text:first-child";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
-    {
-        ObjectVisitor vis;
-        MatcherGenerator mg;
-        std::string selector = "#text2:nth-child(1)";
-        css::CssSelector parser(&mg);
-        parser.parse_string( selector );
-
-        MatcherList list = mg.results();
-        qDebug() << vis.findObjects(root, list);
-    }
+    qDebug() << ObjectVisitor::findObjects(root, "#text");
+    qDebug() << ObjectVisitor::findObjects(root, "QQuickText");
+    qDebug() << ObjectVisitor::findObjects(root, "[text=\"Hello World 3\"]");
+    qDebug() << ObjectVisitor::findObjects(root, "QQuickText#text2");
+    qDebug() << ObjectVisitor::findObjects(root, "QQuickText#text2[text='Hello World 3']");
+    qDebug() << ObjectVisitor::findObjects(root, "#text #text #text2");
+    qDebug() << ObjectVisitor::findObjects(root, "#text:first-child");
+    qDebug() << ObjectVisitor::findObjects(root, "#text2:nth-child(1)");
 }
 
 int main(int argc, char *argv[])
@@ -193,6 +120,8 @@ int main(int argc, char *argv[])
     testMatching(root);
     testCssMatching(root);
 
-//    return app.exec();
-    return 0;
+//    Watcher w(root, )
+
+    return app.exec();
+//    return 0;
 }

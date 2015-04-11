@@ -30,6 +30,8 @@ public:
 
     MatcherList results() const;
     void clear();
+
+    static MatcherList parse(const QString& selector, bool* error);
 private:
     void updateCurrentMatcher(SharedMatcher newMatcher);
 

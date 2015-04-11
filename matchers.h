@@ -193,14 +193,19 @@ private:
 class ObjectVisitor
 {
 public:
-    QObjectList findObjects(QObject *root, MatcherList matchers) const;
-    QObjectList findObjects(QObject *root, SharedMatcher matcher) const;
-    QObjectList findObjects(QObject *root, const Matcher& matcher) const;
-    QObject* findFirstObject(QObject *root, SharedMatcher matcher) const;
-    QObject* findFirstObject(QObject *root, const Matcher& matcher) const;
+
+
+    static QObjectList findObjects(QObject *root, const QString& selector);
+    static QObjectList findObjects(QObject *root, MatcherList matchers);
+    static QObjectList findObjects(QObject *root, SharedMatcher matcher);
+    static QObjectList findObjects(QObject *root, const Matcher& matcher);
+    static QObject* findFirstObject(QObject *root, const QString& selector);
+    static QObject* findFirstObject(QObject *root, MatcherList matchers);
+    static QObject* findFirstObject(QObject *root, SharedMatcher matcher);
+    static QObject* findFirstObject(QObject *root, const Matcher& matcher);
 
 private:
-    bool collect(QObject *object, const Matcher& matcher, bool stopOnFirst, QObjectList& matches) const;
+    static bool collect(QObject *object, const Matcher& matcher, bool stopOnFirst, QObjectList& matches);
 };
 
 #endif // MATCHERS
