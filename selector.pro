@@ -20,17 +20,14 @@ HEADERS += \
     matchers.h \
     matchergenerator.h
 
-# flex --header-file=lexer.h cssselector.l
 OTHER_FILES += \
     css/cssselector.ll \
     css/cssselector.yy
 
 RESOURCES += qml.qrc
 
+# osx lexer dependency
 macx:LIBS += -ll
-
-# Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)

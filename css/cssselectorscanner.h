@@ -12,7 +12,7 @@
 
 #ifndef __FLEX_LEXER_H
 #define yyFlexLexer CssSelectorFlexLexer
-#include "FlexLexer.h"
+#include "css/gen/FlexLexer.h"
 #undef yyFlexLexer
 #endif
 
@@ -25,8 +25,6 @@ class CssSelectorScanner : public CssSelectorFlexLexer
 public:
     CssSelectorScanner(std::istream* arg_yyin = 0, std::ostream* arg_yyout = 0);
     virtual ~CssSelectorScanner();
-
-    //  virtual Parser::token_type lex( Parser::semantic_type* yylval, Parser::location_type* yylloc);
 
     void set_debug(bool b);
 
