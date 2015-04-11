@@ -195,7 +195,7 @@ QObjectList ObjectVisitor::findObjects(QObject *root, const QString &selector)
     return findObjects(root, matchers);
 }
 
-QObjectList ObjectVisitor::findObjects(QObject *root, MatcherList matchers)
+QObjectList ObjectVisitor::findObjects(QObject *root, const MatcherList& matchers)
 {
     QObjectList matches;
     foreach( SharedMatcher sm, matchers) {
@@ -225,7 +225,7 @@ QObject *ObjectVisitor::findFirstObject(QObject *root, const QString &selector)
     return findFirstObject(root, matchers);
 }
 
-QObject *ObjectVisitor::findFirstObject(QObject *root, MatcherList matchers)
+QObject *ObjectVisitor::findFirstObject(QObject *root, const MatcherList &matchers)
 {
     foreach( SharedMatcher sm, matchers) {
         QObject* match = findFirstObject(root, sm);

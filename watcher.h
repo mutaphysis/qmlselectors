@@ -10,7 +10,8 @@ class Watcher : public QObject
 {
     Q_OBJECT
 public:
-    Watcher(QObject *root, SharedMatcher matcher, bool triggerOnce = true, QObject *parent = 0);
+    Watcher(QObject *root, const MatcherList& matchers, bool triggerOnce = true, QObject *parent = 0);
+    Watcher(QObject *root, const QString& selector, bool triggerOnce = true, QObject *parent = 0);
     virtual ~Watcher();
 
 signals:
@@ -26,7 +27,7 @@ private slots:
 
 private:
     QObject* m_root;
-    SharedMatcher m_matcher;
+    MatcherList m_matchers;
     bool m_triggerOnce;
     QTimer m_pollTimer;
 };

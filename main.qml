@@ -20,22 +20,31 @@ Rectangle {
     }
 
     Timer {
-        interval: 500
+        interval: 1000
         running: true
         repeat: true
         triggeredOnStart: true
 
         property var obj: null
+        property int count: 0
 
         onTriggered: {
             if (obj) {
-                print("destroying");
+                print("destroying ", count - 1);
                 obj.destroy();
                 obj = null;
             } else {
-                print("creating");
-                obj = creator.createObject(root);
+                print("creating ", count);
+                obj = creator.createObject(root, {index: count++});
             }
+        }
+    }
+
+    Component {
+        id: creator
+        Other {
+            objectName: "createdObject" + index
+            property int index: 0
         }
     }
 
@@ -59,13 +68,6 @@ Rectangle {
                 objectName: "text2"
                 anchors.centerIn: parent
                 text: "Hello World 3"
-            }
-        }
-
-        Component {
-            id: creator
-            Other {
-                objectName: "created"
             }
         }
 

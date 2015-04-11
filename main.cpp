@@ -121,7 +121,9 @@ int main(int argc, char *argv[])
     testMatching(root);
     testCssMatching(root);
 
-//    Watcher w(root, )
+    Watcher w(root, "#createdObject3");
+    w.start(100);
+    QObject::connect(&w, &Watcher::triggered, &app, &QGuiApplication::quit);
 
     return app.exec();
 //    return 0;

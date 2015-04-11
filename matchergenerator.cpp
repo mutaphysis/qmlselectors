@@ -150,7 +150,7 @@ MatcherList MatcherGenerator::parse(const QString &selector, bool *error)
 {
     MatcherGenerator mg;
     css::CssSelector parser(&mg);
-    *error = parser.parse_string(selector.toStdString());
+    *error = !parser.parse_string(selector.toStdString());
 
     return mg.results();
 }

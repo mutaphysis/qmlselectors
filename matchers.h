@@ -196,11 +196,11 @@ public:
 
 
     static QObjectList findObjects(QObject *root, const QString& selector);
-    static QObjectList findObjects(QObject *root, MatcherList matchers);
+    static QObjectList findObjects(QObject *root, const MatcherList& matchers);
     static QObjectList findObjects(QObject *root, SharedMatcher matcher);
     static QObjectList findObjects(QObject *root, const Matcher& matcher);
     static QObject* findFirstObject(QObject *root, const QString& selector);
-    static QObject* findFirstObject(QObject *root, MatcherList matchers);
+    static QObject* findFirstObject(QObject *root, const MatcherList& matchers);
     static QObject* findFirstObject(QObject *root, SharedMatcher matcher);
     static QObject* findFirstObject(QObject *root, const Matcher& matcher);
 
