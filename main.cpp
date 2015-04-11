@@ -9,6 +9,7 @@
 
 #include "matchers.h"
 #include "matchergenerator.h"
+#include "watcher.h"
 
 void testParsing()
 {

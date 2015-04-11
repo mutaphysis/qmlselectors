@@ -1,6 +1,7 @@
 import QtQuick 2.1
 
 Rectangle {
+    id: root
     width: 360
     height: 360
     objectName: "rectangle"
@@ -15,6 +16,26 @@ Rectangle {
         function test() {
             clicked(null);
             return "hello";
+        }
+    }
+
+    Timer {
+        interval: 500
+        running: true
+        repeat: true
+        triggeredOnStart: true
+
+        property var obj: null
+
+        onTriggered: {
+            if (obj) {
+                print("destroying");
+                obj.destroy();
+                obj = null;
+            } else {
+                print("creating");
+                obj = creator.createObject(root);
+            }
         }
     }
 
@@ -38,6 +59,13 @@ Rectangle {
                 objectName: "text2"
                 anchors.centerIn: parent
                 text: "Hello World 3"
+            }
+        }
+
+        Component {
+            id: creator
+            Other {
+                objectName: "created"
             }
         }
 

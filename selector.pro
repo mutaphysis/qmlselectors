@@ -8,7 +8,8 @@ SOURCES += \
     css/cssselector.cpp \
     matchers.cpp \
     matchergenerator.cpp \
-    main.cpp
+    main.cpp \
+    watcher.cpp
 
 HEADERS += \
     css/gen/cssselector.parser.hh \
@@ -18,7 +19,8 @@ HEADERS += \
     css/cssselector.h \
     css/cssselectorscanner.h \
     matchers.h \
-    matchergenerator.h
+    matchergenerator.h \
+    watcher.h
 
 OTHER_FILES += \
     css/cssselector.ll \
