@@ -16,6 +16,9 @@
 #undef yyFlexLexer
 #endif
 
+#include <string>
+#include <list>
+
 #include "css/gen/cssselector.parser.hh"
 
 namespace css {
@@ -30,6 +33,13 @@ public:
 
     virtual css::cssselector_parser::token_type lex( css::cssselector_parser::semantic_type* yylval,
                                     css::cssselector_parser::location_type* yylloc );
+
+private:
+    std::string* text(const char* str, int length);
+
+    std::list<std::string*> m_dynamic_strings;
+
+    friend class cssselector_parser;
 };
 
 }

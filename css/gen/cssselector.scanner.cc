@@ -2731,7 +2731,7 @@ case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
 #line 96 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext + 1, yyleng - 2);
+{ yylval->stringVal = text(yytext + 1, yyleng - 2);
                           return token::STRING;
                         }
 	YY_BREAK
@@ -2745,14 +2745,14 @@ case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
 #line 102 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext, yyleng);
+{ yylval->stringVal = text(yytext, yyleng);
                           return token::IDENT;}
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
 #line 105 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext + 1, yyleng - 1);
+{ yylval->stringVal = text(yytext + 1, yyleng - 1);
                           return token::HASH;}
 	YY_BREAK
 case 12:
@@ -2878,7 +2878,7 @@ case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
 #line 131 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext, yyleng);
+{ yylval->stringVal = text(yytext, yyleng);
                           return token::DIMENSION;}
 	YY_BREAK
 case 33:
@@ -2889,7 +2889,7 @@ YY_RULE_SETUP
 case 34:
 YY_RULE_SETUP
 #line 136 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext, yyleng);
+{ yylval->stringVal = text(yytext, yyleng);
                           return token::NUMBER;}
 	YY_BREAK
 case 35:
@@ -2914,7 +2914,7 @@ case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
 #line 143 "css/cssselector.ll"
-{ yylval->stringVal = new std::string(yytext, yyleng - 1);
+{ yylval->stringVal = text(yytext, yyleng - 1);
                           return token::FUNCTION;}
 	YY_BREAK
 case 39:
@@ -3982,6 +3982,11 @@ void CssSelectorfree (void * ptr )
 
 namespace css {
 
+void delete_pointer_element( std::string* element )
+{
+    delete element;
+}
+
 CssSelectorScanner::CssSelectorScanner(std::istream* in, std::ostream* out)
     : CssSelectorFlexLexer(in, out)
 {
@@ -3989,6 +3994,8 @@ CssSelectorScanner::CssSelectorScanner(std::istream* in, std::ostream* out)
 
 CssSelectorScanner::~CssSelectorScanner()
 {
+    std::for_each( m_dynamic_strings.begin(), m_dynamic_strings.end(), delete_pointer_element );
+    m_dynamic_strings.clear();
 }
 
 void CssSelectorScanner::set_debug(bool b)
@@ -3996,8 +4003,14 @@ void CssSelectorScanner::set_debug(bool b)
     yy_flex_debug = b;
 }
 
+std::string* CssSelectorScanner::text(const char *str, int length)
+{
+    std::string* val = new std::string(str, length);
+    m_dynamic_strings.push_back( val );
+    return val;
 }
 
+}
 
 /* This implementation of ExampleFlexLexer::yylex() is required to fill the
  * vtable of the class ExampleFlexLexer. We define the scanner's main yylex

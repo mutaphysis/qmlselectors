@@ -507,7 +507,7 @@ namespace css
 
   case 28:
 #line 192 "css/cssselector.yy"
-    {   (yyval.stringVal) = new std::string("=");    ;}
+    {   (yyval.stringVal) = driver.lexer->text("=", 1);    ;}
     break;
 
   case 29:
@@ -556,12 +556,12 @@ namespace css
 
   case 38:
 #line 230 "css/cssselector.yy"
-    {   (yyval.stringVal) = new std::string("+");    ;}
+    {   (yyval.stringVal) = driver.lexer->text("+", 1);    ;}
     break;
 
   case 39:
 #line 232 "css/cssselector.yy"
-    {   (yyval.stringVal) = new std::string("-");    ;}
+    {   (yyval.stringVal) = driver.lexer->text("-", 1);    ;}
     break;
 
   case 40:

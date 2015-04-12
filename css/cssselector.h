@@ -2,6 +2,7 @@
 #define CSSSELECTOR_H
 
 #include <string>
+#include <list>
 
 #include "css/cssselectorscanner.h"
 

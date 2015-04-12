@@ -1,5 +1,6 @@
 #include "cssselector.h"
 
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 
@@ -120,7 +121,5 @@ bool CssSelector::parse_string(const std::string &input, const std::string& snam
     std::istringstream iss(input);
     return parse_stream(iss, sname);
 }
-
-
 
 }

@@ -189,7 +189,7 @@ attribute_selector // : '[' S* IDENT S* [ [ '=' | INCLUDES | DASHMATCH ] S* [ ID
 
 attrib_eq
     : '='
-    {   $$ = new std::string("=");    }
+    {   $$ = driver.lexer->text("=", 1);    }
     | INCLUDES
     {   $$ = $1;    }
     | DASHMATCH
@@ -227,9 +227,9 @@ expression // : [ [ PLUS | '-' | DIMENSION | NUMBER | STRING | IDENT ] S* ]+
 
 expression_statement
     : '+'
-    {   $$ = new std::string("+");    }
+    {   $$ = driver.lexer->text("+", 1);    }
     | '-'
-    {   $$ = new std::string("-");    }
+    {   $$ = driver.lexer->text("-", 1);    }
     | DIMENSION
     {   $$ = $1;    }
     | NUMBER

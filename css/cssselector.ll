@@ -93,16 +93,16 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 "~="                    {return token::INCLUDES;}
 "|="                    {return token::DASHMATCH;}
 
-{string}                { yylval->stringVal = new std::string(yytext + 1, yyleng - 2);
+{string}                { yylval->stringVal = text(yytext + 1, yyleng - 2);
                           return token::STRING;
                         }
 
 {badstring}             {return token::BAD_STRING;}
 
-{ident}	                { yylval->stringVal = new std::string(yytext, yyleng);
+{ident}	                { yylval->stringVal = text(yytext, yyleng);
                           return token::IDENT;}
 
-"#"{name}               { yylval->stringVal = new std::string(yytext + 1, yyleng - 1);
+"#"{name}               { yylval->stringVal = text(yytext + 1, yyleng - 1);
                           return token::HASH;}
 
 @{I}{M}{P}{O}{R}{T}     {return token::IMPORT_SYM;}
@@ -128,19 +128,19 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 {num}{S}                {return token::TIME;}
 {num}{H}{Z}             {return token::FREQ;}
 {num}{K}{H}{Z}          {return token::FREQ;}
-{num}{ident}            { yylval->stringVal = new std::string(yytext, yyleng);
+{num}{ident}            { yylval->stringVal = text(yytext, yyleng);
                           return token::DIMENSION;}
 
 {num}%                  {return token::PERCENTAGE;}
 
-{num}                   { yylval->stringVal = new std::string(yytext, yyleng);
+{num}                   { yylval->stringVal = text(yytext, yyleng);
                           return token::NUMBER;}
 
 "url("{w}{string}{w}")" {return token::URI;}
 "url("{w}{url}{w}")"    {return token::URI;}
 {baduri}                {return token::BAD_URI;}
 
-{ident}"("              { yylval->stringVal = new std::string(yytext, yyleng - 1);
+{ident}"("              { yylval->stringVal = text(yytext, yyleng - 1);
                           return token::FUNCTION;}
 
 .                       { return static_cast<token_type>(*yytext); }
@@ -149,6 +149,11 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 
 namespace css {
 
+void delete_pointer_element( std::string* element )
+{
+    delete element;
+}
+
 CssSelectorScanner::CssSelectorScanner(std::istream* in, std::ostream* out)
     : CssSelectorFlexLexer(in, out)
 {
@@ -156,6 +161,8 @@ CssSelectorScanner::CssSelectorScanner(std::istream* in, std::ostream* out)
 
 CssSelectorScanner::~CssSelectorScanner()
 {
+    std::for_each( m_dynamic_strings.begin(), m_dynamic_strings.end(), delete_pointer_element );
+    m_dynamic_strings.clear();
 }
 
 void CssSelectorScanner::set_debug(bool b)
@@ -163,8 +170,14 @@ void CssSelectorScanner::set_debug(bool b)
     yy_flex_debug = b;
 }
 
+std::string* CssSelectorScanner::text(const char *str, int length)
+{
+    std::string* val = new std::string(str, length);
+    m_dynamic_strings.push_back( val );
+    return val;
 }
 
+}
 
 /* This implementation of ExampleFlexLexer::yylex() is required to fill the
  * vtable of the class ExampleFlexLexer. We define the scanner's main yylex
