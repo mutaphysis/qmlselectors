@@ -1,6 +1,6 @@
-#line 2 "css/gen/cssselector.scanner.cc"
+#line 2 "lib/css/gen/cssselector.scanner.cc"
 
-#line 4 "css/gen/cssselector.scanner.cc"
+#line 4 "lib/css/gen/cssselector.scanner.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -2399,8 +2399,8 @@ static yyconst flex_int16_t yy_rule_linenum[40] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "css/cssselector.ll"
-#line 2 "css/cssselector.ll"
+#line 1 "lib/css/cssselector.ll"
+#line 2 "lib/css/cssselector.ll"
 
 #include <string>
 
@@ -2413,9 +2413,9 @@ typedef css::cssselector_parser::token token;
 typedef css::cssselector_parser::token_type token_type;
 
 #define yyterminate() return token::END
-#line 27 "css/cssselector.ll"
+#line 27 "lib/css/cssselector.ll"
 #define YY_USER_ACTION  yylloc->columns(yyleng);
-#line 2419 "css/gen/cssselector.scanner.cc"
+#line 2419 "lib/css/gen/cssselector.scanner.cc"
 
 #define INITIAL 0
 
@@ -2572,7 +2572,7 @@ YY_DECL
 	register int yy_act;
     
 /* %% [7.0] user's declarations go here */
-#line 79 "css/cssselector.ll"
+#line 79 "lib/css/cssselector.ll"
 
 
 
@@ -2580,7 +2580,7 @@ YY_DECL
     yylloc->step();
 
 
-#line 2584 "css/gen/cssselector.scanner.cc"
+#line 2584 "lib/css/gen/cssselector.scanner.cc"
 
 	if ( !(yy_init) )
 		{
@@ -2692,45 +2692,45 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 86 "css/cssselector.ll"
+#line 86 "lib/css/cssselector.ll"
 {return token::S;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 88 "css/cssselector.ll"
+#line 88 "lib/css/cssselector.ll"
 /* ignore comments */
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 89 "css/cssselector.ll"
+#line 89 "lib/css/cssselector.ll"
 /* unclosed comment at EOF */
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 91 "css/cssselector.ll"
+#line 91 "lib/css/cssselector.ll"
 {return token::CDO;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 92 "css/cssselector.ll"
+#line 92 "lib/css/cssselector.ll"
 {return token::CDC;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 93 "css/cssselector.ll"
+#line 93 "lib/css/cssselector.ll"
 {return token::INCLUDES;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 94 "css/cssselector.ll"
+#line 94 "lib/css/cssselector.ll"
 {return token::DASHMATCH;}
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 96 "css/cssselector.ll"
+#line 96 "lib/css/cssselector.ll"
 { yylval->stringVal = text(yytext + 1, yyleng - 2);
                           return token::STRING;
                         }
@@ -2738,196 +2738,196 @@ YY_RULE_SETUP
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 100 "css/cssselector.ll"
+#line 100 "lib/css/cssselector.ll"
 {return token::BAD_STRING;}
 	YY_BREAK
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 102 "css/cssselector.ll"
+#line 102 "lib/css/cssselector.ll"
 { yylval->stringVal = text(yytext, yyleng);
                           return token::IDENT;}
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 105 "css/cssselector.ll"
+#line 105 "lib/css/cssselector.ll"
 { yylval->stringVal = text(yytext + 1, yyleng - 1);
                           return token::HASH;}
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 108 "css/cssselector.ll"
+#line 108 "lib/css/cssselector.ll"
 {return token::IMPORT_SYM;}
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 109 "css/cssselector.ll"
+#line 109 "lib/css/cssselector.ll"
 {return token::PAGE_SYM;}
 	YY_BREAK
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
-#line 110 "css/cssselector.ll"
+#line 110 "lib/css/cssselector.ll"
 {return token::MEDIA_SYM;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 111 "css/cssselector.ll"
+#line 111 "lib/css/cssselector.ll"
 {return token::CHARSET_SYM;}
 	YY_BREAK
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 113 "css/cssselector.ll"
+#line 113 "lib/css/cssselector.ll"
 {return token::IMPORTANT_SYM;}
 	YY_BREAK
 case 17:
 /* rule 17 can match eol */
 YY_RULE_SETUP
-#line 116 "css/cssselector.ll"
+#line 116 "lib/css/cssselector.ll"
 {return token::EMS;}
 	YY_BREAK
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
-#line 117 "css/cssselector.ll"
+#line 117 "lib/css/cssselector.ll"
 {return token::EXS;}
 	YY_BREAK
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 118 "css/cssselector.ll"
+#line 118 "lib/css/cssselector.ll"
 {return token::LENGTH;}
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 119 "css/cssselector.ll"
+#line 119 "lib/css/cssselector.ll"
 {return token::LENGTH;}
 	YY_BREAK
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 120 "css/cssselector.ll"
+#line 120 "lib/css/cssselector.ll"
 {return token::LENGTH;}
 	YY_BREAK
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 121 "css/cssselector.ll"
+#line 121 "lib/css/cssselector.ll"
 {return token::LENGTH;}
 	YY_BREAK
 case 23:
 /* rule 23 can match eol */
 YY_RULE_SETUP
-#line 122 "css/cssselector.ll"
+#line 122 "lib/css/cssselector.ll"
 {return token::LENGTH;}
 	YY_BREAK
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 123 "css/cssselector.ll"
+#line 123 "lib/css/cssselector.ll"
 {return token::LENGTH;}
 	YY_BREAK
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 124 "css/cssselector.ll"
+#line 124 "lib/css/cssselector.ll"
 {return token::ANGLE;}
 	YY_BREAK
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 125 "css/cssselector.ll"
+#line 125 "lib/css/cssselector.ll"
 {return token::ANGLE;}
 	YY_BREAK
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 126 "css/cssselector.ll"
+#line 126 "lib/css/cssselector.ll"
 {return token::ANGLE;}
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 127 "css/cssselector.ll"
+#line 127 "lib/css/cssselector.ll"
 {return token::TIME;}
 	YY_BREAK
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 128 "css/cssselector.ll"
+#line 128 "lib/css/cssselector.ll"
 {return token::TIME;}
 	YY_BREAK
 case 30:
 /* rule 30 can match eol */
 YY_RULE_SETUP
-#line 129 "css/cssselector.ll"
+#line 129 "lib/css/cssselector.ll"
 {return token::FREQ;}
 	YY_BREAK
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 130 "css/cssselector.ll"
+#line 130 "lib/css/cssselector.ll"
 {return token::FREQ;}
 	YY_BREAK
 case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
-#line 131 "css/cssselector.ll"
+#line 131 "lib/css/cssselector.ll"
 { yylval->stringVal = text(yytext, yyleng);
                           return token::DIMENSION;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 134 "css/cssselector.ll"
+#line 134 "lib/css/cssselector.ll"
 {return token::PERCENTAGE;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 136 "css/cssselector.ll"
+#line 136 "lib/css/cssselector.ll"
 { yylval->stringVal = text(yytext, yyleng);
                           return token::NUMBER;}
 	YY_BREAK
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 139 "css/cssselector.ll"
+#line 139 "lib/css/cssselector.ll"
 {return token::URI;}
 	YY_BREAK
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 140 "css/cssselector.ll"
+#line 140 "lib/css/cssselector.ll"
 {return token::URI;}
 	YY_BREAK
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 141 "css/cssselector.ll"
+#line 141 "lib/css/cssselector.ll"
 {return token::BAD_URI;}
 	YY_BREAK
 case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
-#line 143 "css/cssselector.ll"
+#line 143 "lib/css/cssselector.ll"
 { yylval->stringVal = text(yytext, yyleng - 1);
                           return token::FUNCTION;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 146 "css/cssselector.ll"
+#line 146 "lib/css/cssselector.ll"
 { return static_cast<token_type>(*yytext); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 148 "css/cssselector.ll"
+#line 148 "lib/css/cssselector.ll"
 ECHO;
 	YY_BREAK
-#line 2931 "css/gen/cssselector.scanner.cc"
+#line 2931 "lib/css/gen/cssselector.scanner.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -3976,7 +3976,7 @@ void CssSelectorfree (void * ptr )
 
 /* %ok-for-header */
 
-#line 148 "css/cssselector.ll"
+#line 148 "lib/css/cssselector.ll"
 
 
 

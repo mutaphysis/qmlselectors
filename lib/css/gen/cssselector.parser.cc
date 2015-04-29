@@ -38,7 +38,7 @@
 #include "cssselector.parser.hh"
 
 /* User implementation prologue.  */
-#line 74 "css/cssselector.yy"
+#line 74 "lib/css/cssselector.yy"
 
 #include "css/cssselectorscanner.h"
 #include "css/cssselector.h"
@@ -48,7 +48,7 @@
 
 
 /* Line 317 of lalr1.cc.  */
-#line 52 "css/gen/cssselector.parser.cc"
+#line 52 "lib/css/gen/cssselector.parser.cc"
 
 #ifndef YY_
 # if defined YYENABLE_NLS && YYENABLE_NLS
@@ -279,13 +279,13 @@ namespace css
 
 
     /* User initialization code.  */
-    #line 34 "css/cssselector.yy"
+    #line 34 "lib/css/cssselector.yy"
 {
   // Initialize the initial location.
 /*  @$.begin.filename = @$.end.filename = &driver._file;*/
 }
   /* Line 555 of yacc.c.  */
-#line 289 "css/gen/cssselector.parser.cc"
+#line 289 "lib/css/gen/cssselector.parser.cc"
     /* Initialize the stacks.  The initial state will be pushed in
        yynewstate, since the latter expects the semantical and the
        location values to have been already stored, initialize these
@@ -401,192 +401,192 @@ namespace css
     switch (yyn)
       {
 	  case 2:
-#line 90 "css/cssselector.yy"
+#line 90 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 3:
-#line 94 "css/cssselector.yy"
+#line 94 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 4:
-#line 98 "css/cssselector.yy"
+#line 98 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 5:
-#line 102 "css/cssselector.yy"
+#line 102 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_new_selector_list();
     ;}
     break;
 
   case 6:
-#line 109 "css/cssselector.yy"
+#line 109 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_new_compound_selector();
     ;}
     break;
 
   case 7:
-#line 113 "css/cssselector.yy"
+#line 113 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_new_compound_selector();
     ;}
     break;
 
   case 8:
-#line 117 "css/cssselector.yy"
+#line 117 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_new_compound_selector();
     ;}
     break;
 
   case 11:
-#line 127 "css/cssselector.yy"
+#line 127 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_universal_selector();
     ;}
     break;
 
   case 17:
-#line 142 "css/cssselector.yy"
+#line 142 "lib/css/cssselector.yy"
     {
         // TODO
     ;}
     break;
 
   case 18:
-#line 146 "css/cssselector.yy"
+#line 146 "lib/css/cssselector.yy"
     {
         // TODO
     ;}
     break;
 
   case 23:
-#line 160 "css/cssselector.yy"
+#line 160 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_id_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
   case 24:
-#line 167 "css/cssselector.yy"
+#line 167 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_class_selector((yysemantic_stack_[(2) - (2)].stringVal));
     ;}
     break;
 
   case 25:
-#line 174 "css/cssselector.yy"
+#line 174 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_type_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
   case 26:
-#line 181 "css/cssselector.yy"
+#line 181 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_empty_attribute_selector((yysemantic_stack_[(5) - (3)].stringVal));
     ;}
     break;
 
   case 27:
-#line 185 "css/cssselector.yy"
+#line 185 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_attribute_selector((yysemantic_stack_[(9) - (3)].stringVal), (yysemantic_stack_[(9) - (5)].stringVal), (yysemantic_stack_[(9) - (7)].stringVal));
     ;}
     break;
 
   case 28:
-#line 192 "css/cssselector.yy"
+#line 192 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = driver.lexer->text("=", 1);    ;}
     break;
 
   case 29:
-#line 194 "css/cssselector.yy"
+#line 194 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 30:
-#line 196 "css/cssselector.yy"
+#line 196 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 31:
-#line 201 "css/cssselector.yy"
+#line 201 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 32:
-#line 203 "css/cssselector.yy"
+#line 203 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 34:
-#line 212 "css/cssselector.yy"
+#line 212 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_pseudo_class_selector((yysemantic_stack_[(1) - (1)].stringVal));
     ;}
     break;
 
   case 35:
-#line 216 "css/cssselector.yy"
+#line 216 "lib/css/cssselector.yy"
     {
         driver.cssparser_handle_pseudo_class_function_selector((yysemantic_stack_[(4) - (1)].stringVal), (yysemantic_stack_[(4) - (3)].stringVal));
     ;}
     break;
 
   case 36:
-#line 223 "css/cssselector.yy"
+#line 223 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 37:
-#line 225 "css/cssselector.yy"
+#line 225 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(3) - (1)].stringVal);    ;}
     break;
 
   case 38:
-#line 230 "css/cssselector.yy"
+#line 230 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = driver.lexer->text("+", 1);    ;}
     break;
 
   case 39:
-#line 232 "css/cssselector.yy"
+#line 232 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = driver.lexer->text("-", 1);    ;}
     break;
 
   case 40:
-#line 234 "css/cssselector.yy"
+#line 234 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 41:
-#line 236 "css/cssselector.yy"
+#line 236 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 42:
-#line 238 "css/cssselector.yy"
+#line 238 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
   case 43:
-#line 240 "css/cssselector.yy"
+#line 240 "lib/css/cssselector.yy"
     {   (yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);    ;}
     break;
 
 
     /* Line 675 of lalr1.cc.  */
-#line 590 "css/gen/cssselector.parser.cc"
+#line 590 "lib/css/gen/cssselector.parser.cc"
 	default: break;
       }
     YY_SYMBOL_PRINT ("-> $$ =", yyr1_[yyn], &yyval, &yyloc);
@@ -1069,7 +1069,7 @@ namespace css
 
 } // namespace css
 
-#line 248 "css/cssselector.yy"
+#line 248 "lib/css/cssselector.yy"
 
 
 void css::cssselector_parser::error (const location_type& l, const std::string& m)

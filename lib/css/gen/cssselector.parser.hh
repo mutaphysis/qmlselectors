@@ -48,13 +48,13 @@ namespace css
 }
 
 /* First part of user declarations.  */
-#line 1 "css/cssselector.yy"
+#line 1 "lib/css/cssselector.yy"
 
 #include <string>
 
 
 /* Line 303 of lalr1.cc.  */
-#line 58 "css/gen/cssselector.parser.hh"
+#line 58 "lib/css/gen/cssselector.parser.hh"
 
 #include "location.hh"
 
@@ -105,14 +105,14 @@ namespace css
     /// Symbol semantic values.
 #ifndef YYSTYPE
     union semantic_type
-#line 24 "css/cssselector.yy"
+#line 24 "lib/css/cssselector.yy"
 {
     int                         integerVal;
     double                      doubleVal;
     std::string*                stringVal;
 }
 /* Line 303 of lalr1.cc.  */
-#line 116 "css/gen/cssselector.parser.hh"
+#line 116 "lib/css/gen/cssselector.parser.hh"
 	;
 #else
     typedef YYSTYPE semantic_type;
