@@ -130,8 +130,7 @@ public:
 
     virtual bool match(QObject *object) const;
 private:
-    static const QRegularExpression QML_TY4PE_RE;
-    const QString m_typeName;
+    const QByteArray m_typeName;
 };
 
 /**

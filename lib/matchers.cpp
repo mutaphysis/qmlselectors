@@ -4,8 +4,6 @@
 
 #include <QDebug>
 
-const QRegularExpression QmlTypeMatcher::QML_TY4PE_RE = QRegularExpression("([a-zA-Z0-9]+)(:?_QMLTYPE_[0-9]+){0,1}(:?_QML_[0-9]+){0,1}");
-
 Matcher::~Matcher() {}
 
 NameMatcher::NameMatcher(const QString &name) : m_name(name) {}
@@ -79,19 +77,29 @@ bool IndexedMatcher::match(QObject *object) const
 }
 
 
-QmlTypeMatcher::QmlTypeMatcher(const QString &typeName) : m_typeName(typeName) {}
+QmlTypeMatcher::QmlTypeMatcher(const QString &typeName) : m_typeName(typeName.toLocal8Bit()) {}
 
 bool QmlTypeMatcher::match(QObject *object) const
 {
     const QMetaObject *mo = object->metaObject();
-    QString className = mo->className();
+    const char* className = mo->className();
+    const char* typeName = m_typeName.constData();
+    const int typeLength = m_typeName.size();
+    const int classLength = qstrlen(className);
 
-    QRegularExpressionMatch classMatch = QML_TY4PE_RE.match(className);
-    if (classMatch.hasMatch()) {
-        className = classMatch.captured(1);
+    if (classLength >= typeLength) {
+        if (qstrncmp(typeName, className, typeLength) == 0) {
+
+            if (classLength == typeLength) {
+                return true;
+            } else if (classLength >= typeLength + 4 &&
+                       qstrncmp(className, "_QML", 4)) {
+                return true;
+            }
+        }
     }
 
-    return m_typeName == className;
+    return false;
 }
 
 

@@ -109,17 +109,26 @@ void testCssMatching(QObject* root)
     qDebug() << ObjectVisitor::findObjects(root, "#text2:nth-child(1)");
 }
 
+void myMessageOutput(QtMsgType /*type*/, const QMessageLogContext &/*context*/, const QString &/*msg*/)
+{
+}
+
 int main(int argc, char *argv[])
 {
+    qInstallMessageHandler(myMessageOutput);
+
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     QObject* root = engine.rootObjects().first();
-    testParsing();
-    testMatching(root);
-    testCssMatching(root);
+
+//    for (int i = 0; i < 10000; i++) {
+        testParsing();
+        testMatching(root);
+        testCssMatching(root);
+//    }
 
     Watcher w(root, "#createdObject3");
     w.start(100);

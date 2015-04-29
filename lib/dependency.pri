@@ -8,3 +8,4 @@ macx {
 }
 
 LIBS += $$OUT_PWD/../lib/libqmlselectors.a
+PRE_TARGETDEPS += $$OUT_PWD/../lib/libqmlselectors.a
