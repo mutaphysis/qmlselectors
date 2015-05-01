@@ -115,7 +115,7 @@ void myMessageOutput(QtMsgType /*type*/, const QMessageLogContext &/*context*/, 
 
 int main(int argc, char *argv[])
 {
-    qInstallMessageHandler(myMessageOutput);
+//    qInstallMessageHandler(myMessageOutput);
 
     QGuiApplication app(argc, argv);
 
@@ -123,6 +123,10 @@ int main(int argc, char *argv[])
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     QObject* root = engine.rootObjects().first();
+
+//    for (int i = 0; i < 100000; i++) {
+//        qDebug() << ObjectVisitor::findObjects(root, "[text=\"Hello World 3\"]");
+//    }
 
 //    for (int i = 0; i < 10000; i++) {
         testParsing();

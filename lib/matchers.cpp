@@ -103,13 +103,13 @@ bool QmlTypeMatcher::match(QObject *object) const
 }
 
 
-PropertyMatcher::PropertyMatcher(const QString &property, const QVariant &value) : m_property(property), m_value(value), m_exists(false) {}
+PropertyMatcher::PropertyMatcher(const QString &property, const QVariant &value) : m_property(property.toLocal8Bit()), m_value(value), m_exists(false) {}
 
-PropertyMatcher::PropertyMatcher(const QString &property) : m_property(property), m_exists(true) {}
+PropertyMatcher::PropertyMatcher(const QString &property) : m_property(property.toLocal8Bit()), m_exists(true) {}
 
 bool PropertyMatcher::match(QObject *object) const
 {
-    QVariant value = object->property(m_property.toLocal8Bit().data());
+    QVariant value = object->property(m_property.constData());
     if (m_exists && !value.isNull()) {
         return true;
     }

@@ -144,7 +144,7 @@ public:
 
     virtual bool match(QObject *object) const;
 private:
-    const QString m_property;
+    const QByteArray m_property;
     const QVariant m_value;
     const bool m_exists; // check if is existing only
 };
