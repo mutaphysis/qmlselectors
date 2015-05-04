@@ -1,6 +1,7 @@
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
-
+#include <QQuickView>
+#include <QQuickItem>
+#include <QQmlEngine>
 #include <QDebug>
 
 #include <sstream>
@@ -118,11 +119,12 @@ int main(int argc, char *argv[])
 //    qInstallMessageHandler(myMessageOutput);
 
     QGuiApplication app(argc, argv);
+    QQuickView view;
 
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    view.setSource(QUrl(QStringLiteral("qrc:/main.qml")));
+    view.show();
 
-    QObject* root = engine.rootObjects().first();
+    QObject* root = view.rootObject();
 
 //    for (int i = 0; i < 100000; i++) {
 //        qDebug() << ObjectVisitor::findObjects(root, "[text=\"Hello World 3\"]");
@@ -136,7 +138,7 @@ int main(int argc, char *argv[])
 
     Watcher w(root, "#createdObject3");
     w.start(100);
-    QObject::connect(&w, &Watcher::triggered, &app, &QGuiApplication::quit);
+    w.connect(&w, SIGNAL(triggered(QObject*)), &app, SLOT(quit()));
 
     return app.exec();
 //    return 0;
