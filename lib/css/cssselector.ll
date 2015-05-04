@@ -149,11 +149,6 @@ Z		z|\\0{0,4}(5a|7a)(\r\n|[ \t\r\n\f])?|\\z
 
 namespace css {
 
-void delete_pointer_element( std::string* element )
-{
-    delete element;
-}
-
 CssSelectorScanner::CssSelectorScanner(std::istream* in, std::ostream* out)
     : CssSelectorFlexLexer(in, out)
 {
@@ -161,7 +156,10 @@ CssSelectorScanner::CssSelectorScanner(std::istream* in, std::ostream* out)
 
 CssSelectorScanner::~CssSelectorScanner()
 {
-    std::for_each( m_dynamic_strings.begin(), m_dynamic_strings.end(), delete_pointer_element );
+    std::list<std::string*>::iterator i;
+    for (i = m_dynamic_strings.begin(); i != m_dynamic_strings.end(); ++i) {
+        delete *i;
+    }
     m_dynamic_strings.clear();
 }
 

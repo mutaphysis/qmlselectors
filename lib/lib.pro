@@ -10,6 +10,7 @@ HEADERS += $$files($$PWD/*.h, true)
 HEADERS += $$files($$PWD/*.hh, true)
 
 INCLUDEPATH += $$PWD/css
+INCLUDEPATH += $$PWD/css/gen
 
 OTHER_FILES += \
     $$PWD/css/cssselector.ll \
