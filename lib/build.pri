@@ -9,6 +9,10 @@ INCLUDEPATH += $$PWD/
 INCLUDEPATH += $$PWD/css
 INCLUDEPATH += $$PWD/css/gen
 
+# Ignore wanring in generated code
+QMAKE_CXXFLAGS_WARN_ON += \
+    -Wno-type-limits
+
 # osx lexer dependency
 macx {
     LIBS += -ll
