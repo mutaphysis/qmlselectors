@@ -69,11 +69,11 @@ bool IndexedMatcher::match(QObject *object) const
     case LAST:
         index = siblings.length() - 1;
     case NTH_LAST:
-        index = siblings.length() - m_index;
+        index = siblings.length() - m_index - 1;
     }
 
     // do not search, but rather compare directly
-    return siblings.length() > index && siblings.at(index) == object;
+    return index > 0 && siblings.length() > index && siblings.at(index) == object;
 }
 
 
